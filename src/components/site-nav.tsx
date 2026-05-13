@@ -8,7 +8,10 @@ export function SiteNav() {
         <img src={logo} alt="TRÍADE" className="h-10 w-auto md:h-12" />
       </Link>
       <div className="flex items-center gap-5 md:gap-8">
-        <a href="#travaux" className="text-[10px] font-medium uppercase tracking-[0.2em] transition-colors hover:text-accent">
+        <a href="/contenus" className="text-[10px] font-medium uppercase tracking-[0.2em] transition-colors hover:text-accent">
+          Contenus
+        </a>
+        <a href="/#travaux" className="hidden text-[10px] font-medium uppercase tracking-[0.2em] transition-colors hover:text-accent sm:inline">
           Travaux
         </a>
         <a href="#services" className="hidden text-[10px] font-medium uppercase tracking-[0.2em] transition-colors hover:text-accent sm:inline">
