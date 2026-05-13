@@ -1,14 +1,20 @@
+import logo from "@/assets/triade-logo.png";
+
 export function SiteFooter() {
   return (
     <footer id="contact" className="border-t border-border px-6 py-16 md:px-10 md:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:justify-between">
         <div className="space-y-6">
-          <div className="font-display text-3xl italic">TRÍADE</div>
-          <p className="max-w-xs text-sm text-muted-foreground">
-            Elevating Swiss brands through cinematic narrative and strategic design.
+          <img src={logo} alt="TRÍADE Marketing et Publicité" className="h-16 w-auto" />
+          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+            Studio créatif suisse. Nous façonnons l'image des marques d'exception à travers la
+            narration cinématographique et la direction artistique.
           </p>
           <div className="flex gap-6">
-            <a href="https://instagram.com/triadepublicite" className="font-mono text-xs uppercase text-muted-foreground transition-colors hover:text-accent">
+            <a
+              href="https://instagram.com/triadepublicite"
+              className="font-mono text-xs uppercase text-muted-foreground transition-colors hover:text-accent"
+            >
               Instagram
             </a>
             <a href="#" className="font-mono text-xs uppercase text-muted-foreground transition-colors hover:text-accent">
@@ -26,24 +32,27 @@ export function SiteFooter() {
             <a href="tel:+41768402732" className="block text-sm transition-colors hover:text-accent">
               +41 76 840 27 32
             </a>
-            <a href="mailto:info@triadepublicite.ch" className="block text-sm transition-colors hover:text-accent">
+            <a
+              href="mailto:info@triadepublicite.ch"
+              className="block text-sm transition-colors hover:text-accent"
+            >
               info@triadepublicite.ch
             </a>
           </div>
           <div className="space-y-4">
             <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">Studio</h4>
-            <p className="text-sm">
-              Geneva
+            <p className="text-sm leading-relaxed">
+              Genève
               <br />
-              Switzerland
+              Suisse
             </p>
           </div>
         </div>
       </div>
 
       <div className="mx-auto mt-20 flex max-w-7xl items-center justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-        <span>© 2026 TRÍADE Marketing &amp; Publicité</span>
-        <span className="hidden md:inline">Crafting Authority</span>
+        <span>© 2026 TRÍADE Marketing et Publicité</span>
+        <span className="hidden md:inline">Façonneurs d'autorité</span>
       </div>
     </footer>
   );
