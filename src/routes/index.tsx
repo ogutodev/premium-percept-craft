@@ -185,7 +185,7 @@ function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6">
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
-                  En tournage · Genève
+                  Augusto Sousa · Fondateur
                 </p>
                 <p className="mt-2 font-display text-2xl italic">Direction & Image</p>
               </div>
@@ -318,12 +318,79 @@ function HomePage() {
                 <p className="mt-4 font-display text-xl italic leading-snug">
                   « Nous ne produisons pas du contenu. Nous bâtissons une perception. »
                 </p>
-                <p className="mt-6 text-sm text-muted-foreground">— Direction TRÍADE</p>
+                <p className="mt-6 text-sm text-muted-foreground">— Augusto Sousa, fondateur</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* FONDATEUR — Augusto Sousa */}
+      <section id="fondateur" className="border-t border-border px-6 py-32 md:px-10 md:py-40">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] ring-1 ring-border shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
+              <img
+                src={founder2}
+                alt="Augusto Sousa, fondateur et directeur créatif de TRÍADE"
+                className="size-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                  Fondateur · CEO
+                </p>
+                <p className="mt-2 font-display text-3xl italic">Augusto Sousa</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7 space-y-10">
+            <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
+              03 — Le regard derrière la marque
+            </span>
+            <h2 className="font-display text-4xl italic leading-[1.05] md:text-6xl">
+              Une vision créative.
+              <br />
+              <span className="text-foreground/50">Une signature suisse.</span>
+            </h2>
+            <div className="space-y-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p>
+                Augusto Sousa est le fondateur et directeur créatif de TRÍADE. Entrepreneur basé en
+                Suisse, il dirige chaque projet avec une exigence d'auteur — du premier brief
+                stratégique à la dernière étalonnage couleur.
+              </p>
+              <p>
+                Sa conviction est simple : une marque ne se construit pas en publiant davantage,
+                mais en imposant une perception. C'est cette obsession qui nourrit la signature
+                visuelle de TRÍADE et le travail mené pour ses clients.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 border-t border-border pt-8 md:grid-cols-3">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  Rôle
+                </p>
+                <p className="mt-2 font-display text-lg italic">Directeur créatif</p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  Basé à
+                </p>
+                <p className="mt-2 font-display text-lg italic">Genève, Suisse</p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  Expertise
+                </p>
+                <p className="mt-2 font-display text-lg italic">Image & stratégie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* DILEMME */}
       <section className="relative border-y border-border px-6 py-32 md:px-10 md:py-48">
