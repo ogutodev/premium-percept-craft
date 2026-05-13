@@ -72,14 +72,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TRÍADE — Cinematic Brand Studio · Geneva" },
-      { name: "description", content: "TRÍADE creates strategic visual communication that transforms businesses into premium brands. Filmmaking, photography, branding and advertising from Geneva." },
-      { name: "author", content: "TRÍADE Marketing & Publicité" },
-      { property: "og:title", content: "TRÍADE — Cinematic Brand Studio · Geneva" },
-      { property: "og:description", content: "Strategic visual communication that transforms businesses into premium brands." },
+      { title: "TRÍADE — Studio créatif cinématographique · Genève" },
+      { name: "description", content: "TRÍADE conçoit des récits visuels stratégiques qui transforment les entreprises en marques premium. Film, photographie, branding et publicité depuis Genève." },
+      { name: "author", content: "TRÍADE Marketing et Publicité" },
+      { property: "og:title", content: "TRÍADE — Studio créatif cinématographique · Genève" },
+      { property: "og:description", content: "Récits visuels stratégiques qui transforment les entreprises en marques premium." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -99,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>

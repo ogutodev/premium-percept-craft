@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import heroCamera from "@/assets/hero-camera.jpg";
+import founder1 from "@/assets/founder-1.png";
+import founder2 from "@/assets/founder-2.png";
+import founder3 from "@/assets/founder-3.png";
 import workWatch from "@/assets/work-watch.jpg";
 import workFashion from "@/assets/work-fashion.jpg";
 import workVilla from "@/assets/work-villa.jpg";
@@ -14,33 +16,33 @@ export const Route = createFileRoute("/")({
 const services = [
   {
     n: "01",
-    title: "Strategic Branding",
-    body: "Visual identity systems built for longevity, premium pricing and unmistakable recognition.",
+    title: "Stratégie de marque",
+    body: "Identités visuelles construites pour la longévité, la valorisation premium et une reconnaissance immédiate.",
   },
   {
     n: "02",
-    title: "Cinematic Production",
-    body: "Commercial-grade filmmaking that tells stories worth watching — not just scrolling past.",
+    title: "Production cinématographique",
+    body: "Films publicitaires d'auteur — des récits que l'on regarde, pas que l'on défile.",
   },
   {
     n: "03",
-    title: "Photography & Direction",
-    body: "Editorial imagery that positions your brand alongside the world's most refined names.",
+    title: "Photographie & direction artistique",
+    body: "Une imagerie éditoriale qui place votre marque aux côtés des plus belles signatures du marché.",
   },
   {
     n: "04",
-    title: "Social Authority",
-    body: "Content systems that dominate Reels, TikTok and feeds with calibrated, on-brand presence.",
+    title: "Présence sociale",
+    body: "Systèmes de contenu calibrés pour dominer Reels, TikTok et fils d'actualité avec justesse.",
   },
   {
     n: "05",
-    title: "Digital Architecture",
-    body: "Bespoke websites engineered as high-conversion digital showrooms for your brand.",
+    title: "Architecture digitale",
+    body: "Sites web sur mesure pensés comme de véritables vitrines numériques à haute conversion.",
   },
   {
     n: "06",
-    title: "Paid Growth",
-    body: "Performance campaigns fueled by visuals so good they outperform their own bidding logic.",
+    title: "Croissance média",
+    body: "Campagnes payantes nourries par des visuels si forts qu'ils dépassent leurs propres enchères.",
   },
 ];
 
@@ -55,56 +57,56 @@ const works = [
   {
     src: workFashion,
     title: "Studio L'Art",
-    tag: "Creative Direction",
+    tag: "Direction créative",
     span: "md:col-span-4 md:row-span-3",
     aspect: "aspect-4/5",
   },
   {
     src: workVilla,
     title: "Alpine Heights",
-    tag: "Real Estate Reel",
+    tag: "Immobilier de prestige",
     span: "md:col-span-5 md:row-span-2",
     aspect: "aspect-square",
   },
   {
     src: workNoir,
     title: "Velocity Noir",
-    tag: "Cinematography",
+    tag: "Cinématographie",
     span: "md:col-span-7 md:row-span-2",
     aspect: "aspect-16/9",
   },
 ];
 
 const stats = [
-  { value: "120+", label: "Projects Delivered" },
-  { value: "40M+", label: "Total Reach" },
-  { value: "14", label: "Luxury Partners" },
-  { value: "08", label: "Awards" },
+  { value: "120+", label: "Projets livrés" },
+  { value: "40M+", label: "Portée totale" },
+  { value: "14", label: "Marques de luxe" },
+  { value: "08", label: "Distinctions" },
 ];
 
 const process = [
-  { n: "01", title: "Strategy", body: "We diagnose positioning, audience and the visual gap between you and the market leader." },
-  { n: "02", title: "Production", body: "Direction, lighting, location, talent — every frame planned with intent." },
-  { n: "03", title: "Editing", body: "Color, sound and rhythm assembled into a story your audience cannot ignore." },
-  { n: "04", title: "Growth", body: "Distribution and paid amplification turning your assets into measurable presence." },
+  { n: "01", title: "Stratégie", body: "Diagnostic du positionnement, de l'audience et de l'écart visuel avec le leader du marché." },
+  { n: "02", title: "Production", body: "Direction, lumière, lieu, casting — chaque plan pensé avec intention." },
+  { n: "03", title: "Montage", body: "Couleur, son et rythme assemblés en récit que votre audience ne peut ignorer." },
+  { n: "04", title: "Diffusion", body: "Distribution et amplification payante qui transforment vos contenus en présence mesurable." },
 ];
 
 const testimonials = [
   {
     quote:
-      "TRÍADE didn't just film us — they reframed how the market sees our brand. Inquiries doubled within sixty days.",
+      "TRÍADE n'a pas seulement filmé notre marque — ils ont reconfiguré la manière dont le marché nous perçoit. Les demandes ont doublé en soixante jours.",
     name: "Élise Marchand",
-    role: "Founder · Maison Marchand",
+    role: "Fondatrice · Maison Marchand",
   },
   {
     quote:
-      "The level of taste and execution feels closer to a Parisian fashion house than a marketing agency.",
+      "Le niveau de goût et d'exécution évoque davantage une maison de couture parisienne qu'une agence de marketing.",
     name: "Lukas Vogel",
-    role: "Director · Vogel Horlogerie",
+    role: "Directeur · Vogel Horlogerie",
   },
   {
     quote:
-      "Every asset they delivered raised the bar of what we thought our company could look like.",
+      "Chaque livrable a élevé notre standard. Notre marque a enfin l'allure que nous lui rêvions.",
     name: "Anaïs Roux",
     role: "CMO · Roux Architecture",
   },
@@ -115,69 +117,96 @@ function HomePage() {
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       <SiteNav />
 
-      {/* HERO */}
-      <section className="relative flex min-h-screen items-center px-6 pt-24 md:px-10">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroCamera}
-            alt="Cinema camera lens reflecting city lights"
-            width={1920}
-            height={1080}
-            className="size-full scale-105 object-cover opacity-50 grayscale-[0.3]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
-        </div>
+      {/* HERO — split editorial avec portrait */}
+      <section className="relative flex min-h-screen items-center px-6 pt-28 md:px-10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0 opacity-60"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 80% 30%, color-mix(in oklab, var(--accent) 35%, transparent), transparent), radial-gradient(45% 40% at 10% 80%, color-mix(in oklab, var(--brand) 50%, transparent), transparent)",
+          }}
+        />
 
-        <div className="relative z-10 max-w-[1200px]">
-          <p className="mb-6 animate-reveal-up font-mono text-[10px] uppercase tracking-[0.4em] text-accent">
-            Geneva · Creative Production
-          </p>
-          <h1
-            className="mb-10 font-display text-balance text-5xl italic leading-[0.95] sm:text-6xl md:text-7xl lg:text-[7.5rem]"
-            style={{ animation: "var(--animate-reveal-up)", animationDelay: "150ms" }}
-          >
-            Most Brands Don't Need <span className="text-foreground/40">More Posts.</span>
-            <br />
-            They Need{" "}
-            <span className="relative inline-block">
-              Presence.
-              <span className="absolute -bottom-2 left-0 h-[3px] w-full bg-accent/40" />
-            </span>
-          </h1>
-          <div
-            className="flex flex-col items-start gap-10 md:flex-row md:items-end"
-            style={{ animation: "var(--animate-reveal-up)", animationDelay: "300ms" }}
-          >
-            <p className="max-w-md text-balance text-lg leading-relaxed text-muted-foreground">
-              TRÍADE creates strategic visual narratives that transform businesses into
-              high-authority premium brands.
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <p className="mb-6 animate-reveal-up font-mono text-[10px] uppercase tracking-[0.4em] text-accent">
+              Genève · Studio créatif
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-3 bg-foreground px-7 py-4 text-xs font-medium uppercase tracking-widest text-background transition-colors hover:bg-accent"
-              >
-                Book a Strategy Call
-                <span aria-hidden>→</span>
-              </a>
-              <a
-                href="#work"
-                className="inline-flex items-center gap-3 border border-foreground/20 px-7 py-4 text-xs font-medium uppercase tracking-widest transition-colors hover:border-foreground"
-              >
-                Explore Our Work
-              </a>
+            <h1
+              className="mb-10 font-display text-balance text-5xl italic leading-[0.95] sm:text-6xl md:text-7xl lg:text-[6.5rem]"
+              style={{ animation: "var(--animate-reveal-up)", animationDelay: "150ms" }}
+            >
+              La plupart des marques n'ont pas besoin{" "}
+              <span className="text-foreground/40">de plus de posts.</span>
+              <br />
+              Elles ont besoin de{" "}
+              <span className="relative inline-block">
+                présence.
+                <span className="absolute -bottom-2 left-0 h-[3px] w-full rounded-full bg-accent/60" />
+              </span>
+            </h1>
+            <div
+              className="flex flex-col items-start gap-10 md:flex-row md:items-end"
+              style={{ animation: "var(--animate-reveal-up)", animationDelay: "300ms" }}
+            >
+              <p className="max-w-md text-balance text-lg leading-relaxed text-muted-foreground">
+                TRÍADE conçoit des récits visuels stratégiques qui transforment les entreprises en
+                marques premium d'autorité.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-3 rounded-full bg-foreground px-7 py-4 text-xs font-medium uppercase tracking-widest text-background transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  Réserver un appel
+                  <span aria-hidden>→</span>
+                </a>
+                <a
+                  href="#travaux"
+                  className="inline-flex items-center gap-3 rounded-full border border-foreground/25 px-7 py-4 text-xs font-medium uppercase tracking-widest transition-colors hover:border-foreground"
+                >
+                  Voir nos travaux
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="relative lg:col-span-5"
+            style={{ animation: "var(--animate-reveal-up)", animationDelay: "450ms" }}
+          >
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-card shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)] ring-1 ring-border">
+              <img
+                src={founder3}
+                alt="Fondateur de TRÍADE en pleine direction de tournage"
+                className="size-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                  En tournage · Genève
+                </p>
+                <p className="mt-2 font-display text-2xl italic">Direction & Image</p>
+              </div>
+            </div>
+            <div className="absolute -left-6 -top-6 hidden size-32 rounded-full border border-accent/40 lg:block" />
+            <div className="absolute -bottom-4 -right-4 hidden rounded-2xl bg-card/90 px-5 py-4 backdrop-blur ring-1 ring-border lg:block">
+              <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground">
+                Studio
+              </p>
+              <p className="font-display text-lg italic">Cinematic Authority</p>
             </div>
           </div>
         </div>
 
         <div className="absolute bottom-8 right-6 z-10 hidden items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground md:flex">
           <span className="h-px w-12 bg-foreground/30" />
-          Scroll
+          Défiler
         </div>
       </section>
 
-      {/* AUTHORITY METRICS */}
+      {/* MÉTRIQUES D'AUTORITÉ */}
       <section className="border-y border-border bg-secondary/40 px-6 py-12 md:px-10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 md:flex-row md:items-center">
           <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-16">
@@ -192,9 +221,9 @@ function HomePage() {
           </div>
           <div className="hidden text-right md:block">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              Trusted by
+              Marques de confiance
             </p>
-            <div className="mt-2 flex gap-6 opacity-50">
+            <div className="mt-2 flex gap-6 opacity-60">
               <span className="font-display text-sm italic">Horlogerie.</span>
               <span className="font-display text-sm italic">Maison.</span>
               <span className="font-display text-sm italic">Atelier.</span>
@@ -204,20 +233,20 @@ function HomePage() {
       </section>
 
       {/* PORTFOLIO */}
-      <section id="work" className="px-6 py-32 md:px-10 md:py-40">
+      <section id="travaux" className="px-6 py-32 md:px-10 md:py-40">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 flex items-end justify-between md:mb-20">
             <div className="space-y-4">
               <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
-                01 — Selected Work
+                01 — Sélection
               </span>
-              <h2 className="font-display text-4xl italic md:text-6xl">Visual Authority</h2>
+              <h2 className="font-display text-4xl italic md:text-6xl">Autorité visuelle.</h2>
             </div>
             <a
               href="#contact"
-              className="hidden border-b border-foreground/30 pb-1 text-xs uppercase tracking-widest transition-all hover:border-accent hover:text-accent md:inline-block"
+              className="hidden rounded-full border border-foreground/30 px-5 py-2.5 text-xs uppercase tracking-widest transition-all hover:border-accent hover:text-accent md:inline-block"
             >
-              Commission a Project
+              Commander un projet
             </a>
           </div>
 
@@ -225,7 +254,7 @@ function HomePage() {
             {works.map((w, i) => (
               <article
                 key={w.title}
-                className={`group relative col-span-12 cursor-pointer overflow-hidden bg-card ${w.span}`}
+                className={`group relative col-span-12 cursor-pointer overflow-hidden rounded-[1.75rem] bg-card ring-1 ring-border ${w.span}`}
                 style={i === 1 ? { marginTop: "5rem" } : i === 2 ? { marginTop: "-5rem" } : undefined}
               >
                 <div className={`relative ${w.aspect} overflow-hidden`}>
@@ -249,35 +278,82 @@ function HomePage() {
         </div>
       </section>
 
-      {/* THE PROBLEM */}
+      {/* STUDIO — coulisses & atmosphère */}
+      <section id="studio" className="px-6 py-32 md:px-10 md:py-40">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-7 space-y-6">
+              <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
+                02 — Le studio
+              </span>
+              <h2 className="font-display text-4xl italic leading-[1.05] md:text-6xl">
+                Une signature.
+                <br />
+                Une obsession du détail.
+              </h2>
+            </div>
+            <p className="md:col-span-5 text-balance text-base leading-relaxed text-muted-foreground">
+              TRÍADE est dirigé comme une maison de création — chaque image porte une intention,
+              chaque plan répond à une stratégie. Nous travaillons depuis Genève pour des marques
+              qui refusent l'ordinaire.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-12 gap-4 md:gap-6">
+            <div className="col-span-12 md:col-span-7 relative aspect-[4/5] md:aspect-[16/11] overflow-hidden rounded-[2rem] ring-1 ring-border">
+              <img src={founder1} alt="Direction artistique en plateau" className="size-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">Backstage · 02:14</p>
+                <p className="mt-2 font-display text-2xl italic md:text-3xl">L'instant capté.</p>
+              </div>
+            </div>
+            <div className="col-span-12 md:col-span-5 grid grid-cols-1 gap-4 md:gap-6">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] ring-1 ring-border">
+                <img src={founder2} alt="Cadrage et composition cinématographique" className="size-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              </div>
+              <div className="rounded-[2rem] bg-card p-8 ring-1 ring-border">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-accent">Approche</p>
+                <p className="mt-4 font-display text-xl italic leading-snug">
+                  « Nous ne produisons pas du contenu. Nous bâtissons une perception. »
+                </p>
+                <p className="mt-6 text-sm text-muted-foreground">— Direction TRÍADE</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DILEMME */}
       <section className="relative border-y border-border px-6 py-32 md:px-10 md:py-48">
         <div className="mx-auto max-w-5xl">
           <span className="mb-10 block text-center font-mono text-[10px] uppercase tracking-[0.4em] text-accent">
-            02 — The Dilemma
+            03 — Le dilemme
           </span>
           <h2 className="text-balance text-center font-display text-4xl leading-[1.05] md:text-7xl">
-            Good content is no longer enough.
+            Un bon contenu ne suffit plus.
             <br />
-            <span className="italic text-foreground/50">To win today, you must</span>{" "}
-            <span className="italic">command attention.</span>
+            <span className="italic text-foreground/50">Aujourd'hui, il faut</span>{" "}
+            <span className="italic">imposer le regard.</span>
           </h2>
           <div className="mx-auto mt-20 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="border border-border bg-secondary/40 p-8 md:p-10">
+            <div className="rounded-[2rem] border border-border bg-secondary/40 p-8 md:p-10">
               <p className="mb-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Without TRÍADE
+                Sans TRÍADE
               </p>
               <p className="text-balance italic leading-relaxed text-muted-foreground">
-                "We post every day but our brand still feels small. We look like every other
-                competitor — and price is the only conversation."
+                « Nous publions chaque jour mais notre marque reste petite. Nous ressemblons à tous
+                les concurrents — et le prix devient la seule conversation. »
               </p>
             </div>
-            <div className="border border-foreground bg-foreground p-8 text-background md:p-10">
+            <div className="rounded-[2rem] border border-foreground bg-foreground p-8 text-background md:p-10">
               <p className="mb-6 font-mono text-[10px] uppercase tracking-widest text-accent">
-                With TRÍADE
+                Avec TRÍADE
               </p>
               <p className="text-balance leading-relaxed">
-                "Our brand feels like an institution. People stop scrolling. Price stopped
-                being the conversation — perception became it."
+                « Notre marque a une stature d'institution. Les gens s'arrêtent. Le prix n'est plus
+                la conversation — la perception l'est devenue. »
               </p>
             </div>
           </div>
@@ -288,10 +364,10 @@ function HomePage() {
       <section id="services" className="bg-foreground px-6 py-32 text-background md:px-10 md:py-40">
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 flex flex-col gap-8 md:mb-24 md:flex-row md:items-end md:justify-between">
-            <h2 className="font-display text-6xl italic leading-none md:text-8xl">Our Arsenal.</h2>
+            <h2 className="font-display text-6xl italic leading-none md:text-8xl">Notre arsenal.</h2>
             <p className="max-w-sm text-balance text-base leading-relaxed opacity-70">
-              A vertically integrated studio — strategy, story, image and growth, executed under
-              one roof.
+              Un studio intégré verticalement — stratégie, récit, image et croissance, exécutés
+              sous un même toit.
             </p>
           </div>
 
@@ -309,40 +385,86 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section id="process" className="px-6 py-32 md:px-10 md:py-40">
+      {/* MÉTHODE */}
+      <section id="methode" className="px-6 py-32 md:px-10 md:py-40">
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 space-y-4">
             <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
-              03 — Method
+              04 — Méthode
             </span>
-            <h2 className="font-display text-4xl italic md:text-6xl">A Cinematic Process.</h2>
+            <h2 className="font-display text-4xl italic md:text-6xl">Un processus cinématographique.</h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-px bg-border md:grid-cols-4">
-            {process.map((p) => (
-              <div key={p.n} className="group bg-background p-8 transition-colors hover:bg-secondary/40 md:p-10">
-                <div className="mb-12 flex items-center justify-between">
-                  <span className="font-mono text-xs text-accent">{p.n}</span>
-                  <span className="size-2 rounded-full bg-accent" />
+          <div className="overflow-hidden rounded-[2rem] ring-1 ring-border">
+            <div className="grid grid-cols-1 gap-px bg-border md:grid-cols-4">
+              {process.map((p) => (
+                <div
+                  key={p.n}
+                  className="group bg-background p-8 transition-colors hover:bg-secondary/40 md:p-10"
+                >
+                  <div className="mb-12 flex items-center justify-between">
+                    <span className="font-mono text-xs text-accent">{p.n}</span>
+                    <span className="size-2 rounded-full bg-accent" />
+                  </div>
+                  <h3 className="mb-4 font-display text-3xl italic">{p.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{p.body}</p>
                 </div>
-                <h3 className="mb-4 font-display text-3xl italic">{p.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RÉSEAUX SOCIAUX — showcase */}
+      <section className="px-6 py-32 md:px-10 md:py-40">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="space-y-4">
+              <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
+                05 — Présence sociale
+              </span>
+              <h2 className="font-display text-4xl italic md:text-6xl">Calibrés pour le feed.</h2>
+            </div>
+            <p className="max-w-md text-base leading-relaxed text-muted-foreground">
+              Des contenus pensés pour arrêter le scroll, pas pour le suivre. Chaque format est
+              conçu en cohérence avec votre univers de marque.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+            {[founder3, founder1, founder2, founder3].map((src, i) => (
+              <div
+                key={i}
+                className="group relative aspect-[9/16] overflow-hidden rounded-[1.5rem] ring-1 ring-border"
+              >
+                <img
+                  src={src}
+                  alt={`Format vertical TRÍADE ${i + 1}`}
+                  className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-widest">
+                  <span className="text-accent">Reel · 0{i + 1}</span>
+                  <span className="text-muted-foreground">9:16</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TÉMOIGNAGES */}
       <section className="border-y border-border bg-secondary/30 px-6 py-32 md:px-10 md:py-40">
         <div className="mx-auto max-w-7xl">
           <span className="mb-20 block font-mono text-[10px] uppercase tracking-widest text-accent">
-            04 — Voices
+            06 — Voix
           </span>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-16">
             {testimonials.map((t) => (
-              <figure key={t.name} className="space-y-8">
+              <figure
+                key={t.name}
+                className="space-y-8 rounded-[2rem] border border-border bg-card/40 p-8 md:p-10"
+              >
                 <span className="block font-display text-5xl italic leading-none text-accent">
                   &ldquo;
                 </span>
@@ -361,7 +483,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* CTA FINAL */}
       <section className="relative overflow-hidden px-6 py-40 text-center md:px-10 md:py-56">
         <div
           aria-hidden
@@ -369,24 +491,25 @@ function HomePage() {
         />
         <div className="mx-auto max-w-4xl space-y-12">
           <h2 className="text-balance font-display text-5xl italic leading-[1.05] md:text-7xl lg:text-8xl">
-            Your Business Already Has Potential.
+            Votre entreprise a déjà du potentiel.
             <br />
-            <span className="text-accent">Now It Needs Positioning.</span>
+            <span className="text-accent">Il lui manque le positionnement.</span>
           </h2>
           <p className="mx-auto max-w-xl text-balance text-lg text-muted-foreground">
-            Let's build something people remember — and competitors quietly study.
+            Construisons ensemble quelque chose dont les gens se souviennent — et que vos
+            concurrents étudient en silence.
           </p>
           <div className="pt-4">
             <a
               href="mailto:info@triadepublicite.ch"
-              className="inline-flex items-center gap-4 bg-accent px-10 py-5 text-xs font-bold uppercase tracking-[0.3em] text-accent-foreground transition-transform hover:scale-[1.02]"
+              className="inline-flex items-center gap-4 rounded-full bg-accent px-10 py-5 text-xs font-bold uppercase tracking-[0.3em] text-accent-foreground transition-transform hover:scale-[1.02]"
             >
-              Start a Conversation
+              Démarrer une conversation
               <span aria-hidden>→</span>
             </a>
           </div>
           <p className="pt-12 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
-            Geneva — Switzerland — Worldwide
+            Genève — Suisse — International
           </p>
         </div>
       </section>
