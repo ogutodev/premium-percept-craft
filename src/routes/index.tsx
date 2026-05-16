@@ -8,6 +8,17 @@ import workWatch from "@/assets/work-watch.jpg";
 import workFashion from "@/assets/work-fashion.jpg";
 import workVilla from "@/assets/work-villa.jpg";
 import workNoir from "@/assets/work-noir.jpg";
+import feedRestaurant from "@/assets/feed-restaurant.jpg";
+import feedWatch from "@/assets/feed-watch.jpg";
+import feedBoutique from "@/assets/feed-boutique.jpg";
+import feedFood from "@/assets/feed-food.jpg";
+import feedAerialCar from "@/assets/feed-aerial-car.jpg";
+import feedBtsCamera from "@/assets/feed-bts-camera.jpg";
+import feedEditing from "@/assets/feed-editing.jpg";
+import feedCampaignNoel from "@/assets/feed-campaign-noel.jpg";
+import feedEvent from "@/assets/feed-event.jpg";
+import feedPhone from "@/assets/feed-phone.jpg";
+import feedWedding from "@/assets/feed-wedding.jpg";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
