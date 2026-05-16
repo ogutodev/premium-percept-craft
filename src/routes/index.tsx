@@ -493,38 +493,198 @@ function HomePage() {
         </div>
       </section>
 
-      {/* RÉSEAUX SOCIAUX — showcase */}
-      <section className="px-6 py-32 md:px-10 md:py-40">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      {/* RÉSEAUX SOCIAUX — showcase agence */}
+      <section className="relative overflow-hidden px-6 py-32 md:px-10 md:py-40">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-50"
+          style={{
+            background:
+              "radial-gradient(50% 40% at 85% 20%, color-mix(in oklab, var(--accent) 25%, transparent), transparent), radial-gradient(40% 35% at 10% 85%, color-mix(in oklab, var(--brand) 40%, transparent), transparent)",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mb-16 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
             <div className="space-y-4">
               <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
                 05 — Présence sociale
               </span>
-              <h2 className="font-display text-4xl italic md:text-6xl">Calibrés pour le feed.</h2>
+              <h2 className="font-display text-4xl italic leading-[1.05] md:text-6xl">
+                Contenus pensés
+                <br />
+                pour <span className="text-foreground/50">les marques.</span>
+              </h2>
             </div>
             <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-              Des contenus pensés pour arrêter le scroll, pas pour le suivre. Chaque format est
-              conçu en cohérence avec votre univers de marque.
+              Reels, campagnes, photographie, motion — un écosystème visuel calibré pour vos
+              clients, vos produits et votre univers.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-            {[founder3, founder1, founder2, founder3].map((src, i) => (
-              <div
-                key={i}
-                className="group relative aspect-[9/16] overflow-hidden rounded-[1.5rem] ring-1 ring-border"
-              >
-                <img
-                  src={src}
-                  alt={`Format vertical TRÍADE ${i + 1}`}
-                  className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-widest">
-                  <span className="text-accent">Reel · 0{i + 1}</span>
-                  <span className="text-muted-foreground">9:16</span>
+          {/* Masonry éditoriale */}
+          <div className="grid grid-cols-12 gap-3 md:gap-5">
+            {/* Reel vertical — restaurant */}
+            <article className="group relative col-span-6 md:col-span-3 row-span-2 aspect-[9/16] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedRestaurant} alt="Reel gastronomie" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-background/30" />
+              <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-background/70 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-foreground backdrop-blur">
+                <span className="size-1.5 rounded-full bg-red-500" /> Reel
+              </div>
+              <div className="absolute inset-x-3 bottom-3 space-y-1">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">@maison.gastronomie</p>
+                <p className="font-display text-base italic leading-tight">L'art de la table.</p>
+                <div className="flex items-center gap-3 pt-1 font-mono text-[9px] text-muted-foreground">
+                  <span>♥ 12.4k</span><span>↗ 842</span>
                 </div>
+              </div>
+            </article>
+
+            {/* Campagne large — horlogerie */}
+            <article className="group relative col-span-6 md:col-span-5 aspect-[4/3] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedWatch} alt="Campagne horlogerie" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-background/80 via-background/10 to-transparent" />
+              <div className="absolute left-4 top-4 rounded-full bg-foreground px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-background">
+                Campagne
+              </div>
+              <div className="absolute inset-x-4 bottom-4">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Chronos Heritage · 2025</p>
+                <p className="mt-1 font-display text-xl italic md:text-2xl">Le temps comme signature.</p>
+              </div>
+            </article>
+
+            {/* Mockup phone — Instagram UI */}
+            <article className="group relative col-span-12 md:col-span-4 aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-card ring-1 ring-border">
+              <img src={feedPhone} alt="Maquette Instagram" className="size-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-br from-background/70 via-background/50 to-background/80" />
+              {/* Faux post UI */}
+              <div className="absolute left-4 top-4 right-4 flex items-center gap-2">
+                <div className="size-7 rounded-full bg-accent/80 ring-2 ring-background" />
+                <div className="flex-1">
+                  <p className="font-mono text-[10px] uppercase tracking-widest">triadepublicite</p>
+                  <p className="font-mono text-[8px] text-muted-foreground">Genève · Sponsorisé</p>
+                </div>
+                <span className="font-mono text-foreground/60">···</span>
+              </div>
+              <div className="absolute inset-x-4 bottom-4 space-y-2 rounded-2xl bg-background/60 p-4 backdrop-blur-md ring-1 ring-border">
+                <div className="flex items-center justify-between font-mono text-[10px] text-muted-foreground">
+                  <span>♥  💬  ↗</span>
+                  <span>🔖</span>
+                </div>
+                <p className="font-display text-sm italic leading-snug">
+                  « Une marque qui se regarde. Pas qui se scrolle. »
+                </p>
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">+ 42% de portée</p>
+              </div>
+            </article>
+
+            {/* Boutique landscape */}
+            <article className="group relative col-span-6 md:col-span-4 aspect-[5/4] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedBoutique} alt="Direction artistique boutique" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute inset-x-4 bottom-4">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Retail · Direction</p>
+                <p className="mt-1 font-display text-lg italic">Studio L'Art</p>
+              </div>
+            </article>
+
+            {/* Reel vertical — voiture */}
+            <article className="group relative col-span-6 md:col-span-3 row-span-2 aspect-[9/16] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedAerialCar} alt="Production automobile aérienne" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-background/30" />
+              <div className="absolute right-3 top-3 rounded-full bg-accent px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-accent-foreground">
+                4K · Drone
+              </div>
+              <div className="absolute inset-x-3 bottom-3 space-y-1">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Velocity Noir</p>
+                <p className="font-display text-base italic leading-tight">Cinéma de marque.</p>
+                <div className="flex items-center gap-3 pt-1 font-mono text-[9px] text-muted-foreground">
+                  <span>▶ 284k vues</span>
+                </div>
+              </div>
+            </article>
+
+            {/* BTS caméra */}
+            <article className="group relative col-span-12 md:col-span-3 aspect-square overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedBtsCamera} alt="Coulisses de tournage" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent" />
+              <div className="absolute left-3 top-3 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-foreground">
+                <span className="size-1.5 animate-pulse rounded-full bg-accent" /> Tournage
+              </div>
+              <div className="absolute inset-x-3 bottom-3">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">BTS · 03</p>
+                <p className="mt-1 font-display text-base italic">Backstage</p>
+              </div>
+            </article>
+
+            {/* Food éditorial */}
+            <article className="group relative col-span-6 md:col-span-3 aspect-square overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedFood} alt="Éditorial gastronomique" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/75 to-transparent" />
+              <div className="absolute inset-x-3 bottom-3">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Photographie</p>
+                <p className="mt-1 font-display text-base italic">Éditorial</p>
+              </div>
+            </article>
+
+            {/* Editing process */}
+            <article className="group relative col-span-6 md:col-span-3 aspect-square overflow-hidden rounded-[1.5rem] ring-1 ring-border bg-card">
+              <img src={feedEditing} alt="Studio de montage" className="size-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 to-background/10" />
+              <div className="absolute inset-x-3 bottom-3 space-y-1">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Post-production</p>
+                <p className="font-display text-base italic">Color · Son · Rythme</p>
+              </div>
+            </article>
+
+            {/* Campagne Noël — large */}
+            <article className="group relative col-span-12 md:col-span-6 aspect-[16/9] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedCampaignNoel} alt="Campagne saisonnière" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" />
+              <div className="absolute inset-y-0 left-0 flex flex-col justify-between p-5 md:p-7 max-w-[60%]">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Campagne saisonnière</p>
+                <div>
+                  <p className="font-display text-2xl italic leading-tight md:text-3xl">Une marque qu'on attend.</p>
+                  <p className="mt-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
+                    Maison Marchand · Noël 25
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            {/* Event */}
+            <article className="group relative col-span-6 md:col-span-3 aspect-[4/5] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedEvent} alt="Événement de marque" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute inset-x-3 bottom-3">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Événement</p>
+                <p className="mt-1 font-display text-base italic">Couverture live</p>
+              </div>
+            </article>
+
+            {/* Wedding / lifestyle */}
+            <article className="group relative col-span-6 md:col-span-3 aspect-[4/5] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
+              <img src={feedWedding} alt="Reportage lifestyle" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute inset-x-3 bottom-3">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Lifestyle</p>
+                <p className="mt-1 font-display text-base italic">Récit de marque</p>
+              </div>
+            </article>
+          </div>
+
+          {/* Bandeau métriques sociales */}
+          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-[1.5rem] bg-border ring-1 ring-border md:grid-cols-4 md:mt-16">
+            {[
+              { v: "+340%", l: "Portée moyenne" },
+              { v: "12M", l: "Vues générées" },
+              { v: "98%", l: "Rétention 3s" },
+              { v: "x4", l: "Engagement client" },
+            ].map((m) => (
+              <div key={m.l} className="bg-background p-6 md:p-8">
+                <p className="font-mono text-2xl text-accent md:text-3xl">{m.v}</p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  {m.l}
+                </p>
               </div>
             ))}
           </div>
