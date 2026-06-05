@@ -29,8 +29,8 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-12 md:gap-20">
           <div className="space-y-4">
             <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">Contact</h4>
-            <a href="tel:+41768402732" className="block text-sm transition-colors hover:text-accent">
-              +41 76 840 27 32
+            <a href="https://wa.me/41789670537" target="_blank" rel="noreferrer" className="block text-sm transition-colors hover:text-accent">
+              WhatsApp · +41 78 967 05 37
             </a>
             <a
               href="mailto:info@triadepublicite.ch"
