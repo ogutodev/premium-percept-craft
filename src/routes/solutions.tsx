@@ -560,7 +560,7 @@ function ContactForm() {
     e.preventDefault();
     if (!form.nom || !form.telephone || !form.email) return;
     const msg = `Bonjour TRÍADE,\n\nJe souhaite obtenir un devis.\n\nNom : ${form.nom}\nTéléphone : ${form.telephone}\nEmail : ${form.email}\nEntreprise : ${form.entreprise}\nService souhaité : ${form.service}\nDescription du projet : ${form.description}\n\nMerci.`;
-    const url = `https://wa.me/41768402732?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/41789670537?text=${encodeURIComponent(msg)}`;
     setSent(true);
     window.open(url, "_blank");
   };
@@ -578,11 +578,14 @@ function ContactForm() {
             demande prête à envoyer. Réponse sous 24h ouvrées.
           </p>
           <div className="mt-10 space-y-4 text-sm">
-            <a href="https://wa.me/41768402732" className="flex items-center gap-3 text-background/80 hover:text-background">
-              <span className="h-px w-8 bg-background/40" /> +41 76 840 27 32
+            <a href="https://wa.me/41789670537" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-background/80 hover:text-background">
+              <span className="h-px w-8 bg-background/40" /> WhatsApp · +41 78 967 05 37
             </a>
-            <a href="mailto:contact@triadepublicite.ch" className="flex items-center gap-3 text-background/80 hover:text-background">
-              <span className="h-px w-8 bg-background/40" /> contact@triadepublicite.ch
+            <a href="mailto:info@triadepublicite.ch" className="flex items-center gap-3 text-background/80 hover:text-background">
+              <span className="h-px w-8 bg-background/40" /> info@triadepublicite.ch
+            </a>
+            <a href="https://instagram.com/triadepublicite" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-background/80 hover:text-background">
+              <span className="h-px w-8 bg-background/40" /> Instagram · @triadepublicite
             </a>
             <p className="flex items-center gap-3 text-background/60">
               <span className="h-px w-8 bg-background/40" /> Genève · Suisse romande
@@ -638,7 +641,7 @@ function ContactForm() {
           </button>
           {sent && (
             <p className="text-xs text-background/70">
-              Votre message s'ouvre dans WhatsApp. Si rien ne se passe, appelez le +41 76 840 27 32.
+              Votre message s'ouvre dans WhatsApp. Si rien ne se passe, contactez le +41 78 967 05 37.
             </p>
           )}
         </form>
