@@ -8,6 +8,9 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
+import { PageLoader } from "@/components/page-loader";
+import { MotionRuntime } from "@/components/motion-runtime";
+
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
