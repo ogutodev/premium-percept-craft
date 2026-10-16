@@ -30,8 +30,8 @@
   --color-ring: var(--ring);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
-  --font-display: "Playfair Display", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-display: "Helvetica Neue", "Neue Haas Grotesk Display", Inter, Helvetica, Arial, sans-serif;
+  --font-sans: "Helvetica Neue", Inter, Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --ease-cinema: cubic-bezier(0.2, 0, 0, 1);
 
@@ -206,3 +206,29 @@
   [data-reveal] { transform: translateY(16px); transition-duration: 0.7s; }
   .wa-fab::before { animation-duration: 3s; }
 }
+
+/* === Swiss typography system ============================================ */
+:root {
+  --type-h1: clamp(2.375rem, 1.6rem + 3.6vw, 5rem);
+  --type-h2: clamp(1.875rem, 1.4rem + 2.2vw, 3.5rem);
+  --type-h3: clamp(1.375rem, 1.1rem + 1.1vw, 2.25rem);
+  --type-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --type-label: clamp(0.75rem, 0.72rem + 0.1vw, 0.8125rem);
+}
+body { font-size: var(--type-body); line-height: 1.6; font-feature-settings: "ss01", "cv11"; }
+p { line-height: 1.6; }
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-style: normal;
+  text-wrap: balance;
+}
+h1.font-display, .font-display.italic, .font-display .italic, h1 .italic, h2 .italic, h3 .italic { font-style: normal; }
+h1 { line-height: 1.05; }
+h2, h3 { line-height: 1.12; }
+.font-display[class*="leading-[0.9"] { line-height: 1.05; }
+h1.font-display { font-size: var(--type-h1); font-weight: 600; letter-spacing: -0.04em; }
+h2.font-display { font-size: var(--type-h2); }
+h3.font-display { font-size: var(--type-h3); letter-spacing: -0.02em; }
+nav a, button, .font-mono { font-weight: 500; letter-spacing: 0.08em; }
