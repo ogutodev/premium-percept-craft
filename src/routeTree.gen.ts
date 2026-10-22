@@ -12,14 +12,18 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as ContenusRouteImport } from './routes/contenus'
+import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnConfidentialiteRouteImport } from './routes/en.confidentialite'
 import { Route as EnContenusRouteImport } from './routes/en.contenus'
+import { Route as EnImpressumRouteImport } from './routes/en.impressum'
 import { Route as EnSolutionsRouteImport } from './routes/en.solutions'
 import { Route as PtIndexRouteImport } from './routes/pt.index'
 import { Route as PtConfidentialiteRouteImport } from './routes/pt.confidentialite'
 import { Route as PtContenusRouteImport } from './routes/pt.contenus'
+import { Route as PtImpressumRouteImport } from './routes/pt.impressum'
 import { Route as PtSolutionsRouteImport } from './routes/pt.solutions'
 import { Route as TravauxSlugRouteImport } from './routes/travaux.$slug'
 import { Route as EnTravauxSlugRouteImport } from './routes/en.travaux.$slug'
@@ -38,6 +42,16 @@ const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
 const ContenusRoute = ContenusRouteImport.update({
   id: '/contenus',
   path: '/contenus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpressumRoute = ImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SolutionsRoute = SolutionsRouteImport.update({
@@ -60,6 +74,11 @@ const EnContenusRoute = EnContenusRouteImport.update({
   path: '/en/contenus',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnImpressumRoute = EnImpressumRouteImport.update({
+  id: '/en/impressum',
+  path: '/en/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnSolutionsRoute = EnSolutionsRouteImport.update({
   id: '/en/solutions',
   path: '/en/solutions',
@@ -78,6 +97,11 @@ const PtConfidentialiteRoute = PtConfidentialiteRouteImport.update({
 const PtContenusRoute = PtContenusRouteImport.update({
   id: '/pt/contenus',
   path: '/pt/contenus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtImpressumRoute = PtImpressumRouteImport.update({
+  id: '/pt/impressum',
+  path: '/pt/impressum',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PtSolutionsRoute = PtSolutionsRouteImport.update({
@@ -105,12 +129,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contenus': typeof ContenusRoute
+  '/impressum': typeof ImpressumRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
   '/en/contenus': typeof EnContenusRoute
+  '/en/impressum': typeof EnImpressumRoute
   '/en/solutions': typeof EnSolutionsRoute
   '/pt/confidentialite': typeof PtConfidentialiteRoute
   '/pt/contenus': typeof PtContenusRoute
+  '/pt/impressum': typeof PtImpressumRoute
   '/pt/solutions': typeof PtSolutionsRoute
   '/travaux/$slug': typeof TravauxSlugRoute
   '/en/': typeof EnIndexRoute
@@ -122,12 +150,16 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contenus': typeof ContenusRoute
+  '/impressum': typeof ImpressumRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
   '/en/contenus': typeof EnContenusRoute
+  '/en/impressum': typeof EnImpressumRoute
   '/en/solutions': typeof EnSolutionsRoute
   '/pt/confidentialite': typeof PtConfidentialiteRoute
   '/pt/contenus': typeof PtContenusRoute
+  '/pt/impressum': typeof PtImpressumRoute
   '/pt/solutions': typeof PtSolutionsRoute
   '/travaux/$slug': typeof TravauxSlugRoute
   '/en': typeof EnIndexRoute
@@ -140,12 +172,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contenus': typeof ContenusRoute
+  '/impressum': typeof ImpressumRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
   '/en/contenus': typeof EnContenusRoute
+  '/en/impressum': typeof EnImpressumRoute
   '/en/solutions': typeof EnSolutionsRoute
   '/pt/confidentialite': typeof PtConfidentialiteRoute
   '/pt/contenus': typeof PtContenusRoute
+  '/pt/impressum': typeof PtImpressumRoute
   '/pt/solutions': typeof PtSolutionsRoute
   '/travaux/$slug': typeof TravauxSlugRoute
   '/en/': typeof EnIndexRoute
@@ -159,12 +195,16 @@ export interface FileRouteTypes {
     | '/'
     | '/confidentialite'
     | '/contenus'
+    | '/impressum'
+    | '/sitemap.xml'
     | '/solutions'
     | '/en/confidentialite'
     | '/en/contenus'
+    | '/en/impressum'
     | '/en/solutions'
     | '/pt/confidentialite'
     | '/pt/contenus'
+    | '/pt/impressum'
     | '/pt/solutions'
     | '/travaux/$slug'
     | '/en/'
@@ -176,12 +216,16 @@ export interface FileRouteTypes {
     | '/'
     | '/confidentialite'
     | '/contenus'
+    | '/impressum'
+    | '/sitemap.xml'
     | '/solutions'
     | '/en/confidentialite'
     | '/en/contenus'
+    | '/en/impressum'
     | '/en/solutions'
     | '/pt/confidentialite'
     | '/pt/contenus'
+    | '/pt/impressum'
     | '/pt/solutions'
     | '/travaux/$slug'
     | '/en'
@@ -193,12 +237,16 @@ export interface FileRouteTypes {
     | '/'
     | '/confidentialite'
     | '/contenus'
+    | '/impressum'
+    | '/sitemap.xml'
     | '/solutions'
     | '/en/confidentialite'
     | '/en/contenus'
+    | '/en/impressum'
     | '/en/solutions'
     | '/pt/confidentialite'
     | '/pt/contenus'
+    | '/pt/impressum'
     | '/pt/solutions'
     | '/travaux/$slug'
     | '/en/'
@@ -211,12 +259,16 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContenusRoute: typeof ContenusRoute
+  ImpressumRoute: typeof ImpressumRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRoute
   EnConfidentialiteRoute: typeof EnConfidentialiteRoute
   EnContenusRoute: typeof EnContenusRoute
+  EnImpressumRoute: typeof EnImpressumRoute
   EnSolutionsRoute: typeof EnSolutionsRoute
   PtConfidentialiteRoute: typeof PtConfidentialiteRoute
   PtContenusRoute: typeof PtContenusRoute
+  PtImpressumRoute: typeof PtImpressumRoute
   PtSolutionsRoute: typeof PtSolutionsRoute
   TravauxSlugRoute: typeof TravauxSlugRoute
   EnIndexRoute: typeof EnIndexRoute
@@ -248,6 +300,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContenusRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/impressum': {
+      id: '/impressum'
+      path: '/impressum'
+      fullPath: '/impressum'
+      preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions': {
       id: '/solutions'
       path: '/solutions'
@@ -276,6 +342,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnContenusRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/impressum': {
+      id: '/en/impressum'
+      path: '/en/impressum'
+      fullPath: '/en/impressum'
+      preLoaderRoute: typeof EnImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/solutions': {
       id: '/en/solutions'
       path: '/en/solutions'
@@ -302,6 +375,13 @@ declare module '@tanstack/react-router' {
       path: '/pt/contenus'
       fullPath: '/pt/contenus'
       preLoaderRoute: typeof PtContenusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/impressum': {
+      id: '/pt/impressum'
+      path: '/pt/impressum'
+      fullPath: '/pt/impressum'
+      preLoaderRoute: typeof PtImpressumRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pt/solutions': {
@@ -339,12 +419,16 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ConfidentialiteRoute: ConfidentialiteRoute,
   ContenusRoute: ContenusRoute,
+  ImpressumRoute: ImpressumRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRoute,
   EnConfidentialiteRoute: EnConfidentialiteRoute,
   EnContenusRoute: EnContenusRoute,
+  EnImpressumRoute: EnImpressumRoute,
   EnSolutionsRoute: EnSolutionsRoute,
   PtConfidentialiteRoute: PtConfidentialiteRoute,
   PtContenusRoute: PtContenusRoute,
+  PtImpressumRoute: PtImpressumRoute,
   PtSolutionsRoute: PtSolutionsRoute,
   TravauxSlugRoute: TravauxSlugRoute,
   EnIndexRoute: EnIndexRoute,

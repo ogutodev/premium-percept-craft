@@ -1,22 +1,22 @@
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import feedRestaurant from "@/assets/feed-restaurant.jpg";
-import feedBts from "@/assets/feed-bts-camera.jpg";
-import feedNoel from "@/assets/feed-campaign-noel.jpg";
-import feedClient from "@/assets/feed-client-portrait.jpg";
-import feedWatch from "@/assets/feed-watch.jpg";
-import feedEditing from "@/assets/feed-editing.jpg";
-import feedAerial from "@/assets/feed-aerial-car.jpg";
-import feedFood from "@/assets/feed-food.jpg";
-import feedPhone from "@/assets/feed-phone.jpg";
-import feedWedding from "@/assets/feed-wedding.jpg";
-import feedEvent from "@/assets/feed-event.jpg";
-import feedBoutique from "@/assets/feed-boutique.jpg";
-import workWatch from "@/assets/work-watch.jpg";
-import workFashion from "@/assets/work-fashion.jpg";
-import workVilla from "@/assets/work-villa.jpg";
-import workNoir from "@/assets/work-noir.jpg";
-import founder1 from "@/assets/founder-1.png";
+import feedRestaurant from "@/assets/feed-restaurant.webp";
+import feedBts from "@/assets/feed-bts-camera.webp";
+import feedNoel from "@/assets/feed-campaign-noel.webp";
+import feedClient from "@/assets/feed-client-portrait.webp";
+import feedWatch from "@/assets/feed-watch.webp";
+import feedEditing from "@/assets/feed-editing.webp";
+import feedAerial from "@/assets/feed-aerial-car.webp";
+import feedFood from "@/assets/feed-food.webp";
+import feedPhone from "@/assets/feed-phone.webp";
+import feedWedding from "@/assets/feed-wedding.webp";
+import feedEvent from "@/assets/feed-event.webp";
+import feedBoutique from "@/assets/feed-boutique.webp";
+import workWatch from "@/assets/work-watch.webp";
+import workFashion from "@/assets/work-fashion.webp";
+import workVilla from "@/assets/work-villa.webp";
+import workNoir from "@/assets/work-noir.webp";
+import founder1 from "@/assets/founder-1.webp";
 
 
 type Tile = {
@@ -148,10 +148,10 @@ export function ContenusPage() {
             style={{ animation: "var(--animate-reveal-up)", animationDelay: "420ms" }}
           >
             <div className="absolute left-0 top-0 w-[58%] aspect-[4/5] overflow-hidden rounded-[2rem] ring-1 ring-border shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
-              <img src={feedRestaurant} alt="" className="size-full object-cover" loading="eager" />
+              <img src={feedRestaurant} alt="Reel de gastronomia produzido pela TRÍADE" className="size-full object-cover" loading="eager" />
             </div>
             <div className="absolute right-0 top-12 w-[44%] aspect-[9/16] overflow-hidden rounded-[1.75rem] ring-1 ring-border shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]">
-              <img src={feedAerial} alt="" className="size-full object-cover" />
+              <img src={feedAerial} alt="Filmagem aérea automotiva" className="size-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-widest">
                 <span className="text-accent">Reel · 00:18</span>
@@ -159,7 +159,7 @@ export function ContenusPage() {
               </div>
             </div>
             <div className="absolute bottom-0 left-8 w-[50%] aspect-square overflow-hidden rounded-[1.75rem] ring-1 ring-border shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]">
-              <img src={feedWatch} alt="" className="size-full object-cover" />
+              <img src={feedWatch} alt="Filme de produto relojoeiro" className="size-full object-cover" />
             </div>
             <div className="absolute -right-2 bottom-16 hidden rounded-2xl bg-card/90 px-4 py-3 backdrop-blur ring-1 ring-border md:block">
               <p className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
@@ -373,7 +373,7 @@ export function ContenusPage() {
 
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             <div className="col-span-12 md:col-span-7 relative aspect-[16/10] overflow-hidden rounded-[2rem] ring-1 ring-border">
-              <img src={feedBts} alt="Filmagem em estúdio" className="size-full object-cover" />
+              <img loading="lazy" src={feedBts} alt="Filmagem em estúdio" className="size-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
@@ -385,7 +385,7 @@ export function ContenusPage() {
 
             <div className="col-span-12 md:col-span-5 grid grid-cols-1 gap-4 md:gap-6">
               <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] ring-1 ring-border">
-                <img src={feedEditing} alt="Sala de colorização" className="size-full object-cover" />
+                <img loading="lazy" src={feedEditing} alt="Sala de colorização" className="size-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="font-mono text-[10px] uppercase tracking-widest text-accent">
@@ -395,7 +395,7 @@ export function ContenusPage() {
                 </div>
               </div>
               <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] ring-1 ring-border">
-                <img src={founder1} alt="Direção criativa TRÍADE" className="size-full object-cover" />
+                <img loading="lazy" src={founder1} alt="Direção criativa TRÍADE" className="size-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="font-mono text-[10px] uppercase tracking-widest text-accent">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import logo from "@/assets/triade-logo.png";
+import logo from "@/assets/triade-logo.webp";
 import { LOCALES, localeFromPath, lp, stripLocale, ui } from "@/lib/i18n";
 
 export function SiteNav() {

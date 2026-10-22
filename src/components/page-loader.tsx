@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "@/assets/triade-logo.png";
+import logo from "@/assets/triade-logo.webp";
 
 export function PageLoader() {
   const [visible, setVisible] = useState(true);

@@ -1,4 +1,4 @@
-import logo from "@/assets/triade-logo.png";
+import logo from "@/assets/triade-logo.webp";
 import { lp, ui, useLocale } from "@/lib/i18n";
 
 export function SiteFooter() {
@@ -43,7 +43,10 @@ export function SiteFooter() {
 
       <div className="mx-auto mt-20 flex max-w-7xl items-center justify-between gap-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
         <span>© 2026 TRÍADE Marketing et Publicité</span>
-        <a href={lp(locale, "/confidentialite")} className="transition-colors hover:text-accent">{t.privacy}</a>
+        <span className="flex gap-6">
+          <a href={lp(locale, "/impressum")} className="transition-colors hover:text-accent">Impressum</a>
+          <a href={lp(locale, "/confidentialite")} className="transition-colors hover:text-accent">{t.privacy}</a>
+        </span>
         <span className="hidden md:inline">{t.tagline}</span>
       </div>
     </footer>
