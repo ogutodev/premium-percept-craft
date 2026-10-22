@@ -47,14 +47,14 @@ const feed: Tile[] = [
   { src: feedBts, tag: "Backstage", title: "Tournage commercial", meta: "Reel · 00:24", type: "reel" },
   { src: feedNoel, tag: "Campagne saisonnière", title: "Séance Photo de Noël", meta: "Post · Janvier", type: "campaign" },
   { src: feedClient, tag: "Personal branding", title: "Portrait fondatrice", meta: "Photographie", type: "image" },
-  { src: feedWatch, tag: "Horlogerie", title: "Chronos Heritage", meta: "Film produit", type: "reel" },
+  { src: feedWatch, tag: "Horlogerie", title: "Film produit horloger", meta: "Reel · Horlogerie", type: "reel" },
   { src: feedEditing, tag: "Post-production", title: "Étalonnage cinéma", meta: "BTS · Studio", type: "image" },
   { src: feedAerial, tag: "Automobile", title: "Route alpine", meta: "Reel · 00:18", type: "reel" },
   { src: feedFood, tag: "Gastronomie", title: "Édition gourmet", meta: "Photographie", type: "image" },
   { src: feedWedding, tag: "Mariage", title: "Cérémonie de prestige", meta: "Film événement", type: "campaign" },
   { src: feedBoutique, tag: "Retail", title: "Boutique signature", meta: "Direction artistique", type: "image" },
   { src: feedEvent, tag: "Événementiel", title: "Conférence d'auteur", meta: "Reportage", type: "reel" },
-  { src: workVilla, tag: "Immobilier", title: "Alpine Heights", meta: "Reel · 00:32", type: "reel" },
+  { src: workVilla, tag: "Immobilier", title: "Résidence de prestige", meta: "Reel · 00:32", type: "reel" },
 ];
 
 const reels = [
@@ -77,21 +77,21 @@ const services = [
 const transformations = [
   {
     img: workFashion,
-    name: "Maison L'Atelier",
+    name: "Mode & retail",
     sector: "Mode · Genève",
     before: "Présence Instagram dispersée, sans direction visuelle.",
     after: "Identité éditoriale cohérente, +210% d'engagement en 90 jours.",
   },
   {
     img: workWatch,
-    name: "Chronos Heritage",
+    name: "Horlogerie",
     sector: "Horlogerie · Vaud",
     before: "Photos produit standards, peu de désir de marque.",
     after: "Campagne cinématographique reprise par 3 médias spécialisés.",
   },
   {
     img: workNoir,
-    name: "Velocity Motors",
+    name: "Automobile",
     sector: "Automobile · Lausanne",
     before: "Aucun contenu vidéo, présence locale uniquement.",
     after: "Reels viraux, audience nationale et premiers leads internationaux.",
