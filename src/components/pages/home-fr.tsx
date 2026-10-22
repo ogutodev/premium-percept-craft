@@ -101,13 +101,15 @@ export function HomePage() {
               className="flex flex-col items-start gap-10 md:flex-row md:items-end"
               style={{ animation: "var(--animate-reveal-up)", animationDelay: "300ms" }}
             >
+              <div className="max-w-md space-y-4">
               <p className="max-w-md text-balance text-lg leading-relaxed text-muted-foreground">
                 TRÍADE conçoit des récits visuels stratégiques qui transforment les entreprises en
                 marques premium d'autorité.
               </p>
-              <p className="-mt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-accent md:mt-0">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
                 Studio bilingue français · portugais, ancré à Genève.
               </p>
+              </div>
               <div className="flex flex-wrap gap-3">
                 <BookCallButton className="inline-flex items-center gap-3 rounded-full bg-foreground px-7 py-4 text-xs font-medium uppercase tracking-widest text-background transition-colors hover:bg-accent hover:text-accent-foreground">
                   Réserver un appel
