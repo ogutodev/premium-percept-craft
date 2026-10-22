@@ -10,6 +10,12 @@ const PAGES = ["", "/pt", "/en"].flatMap((pre) =>
   BASE.map((p) => ({ path: pre ? (p === "/" ? pre : pre + p) : p })),
 );
 
+// Inside Lovable's build environment the preset is forced to cloudflare-module,
+// where nitro's Node prerender cannot render routes (every page 404s).
+// Prerender only for external Node builds (Infomaniak).
+const isLovableSandbox =
+  process.env.LOVABLE_SANDBOX === "1" || !!process.env.DEV_SERVER__PROJECT_PATH;
+
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
@@ -17,10 +23,14 @@ export default defineConfig({
   },
   nitro: {
     preset: "node-server",
-    prerender: {
-      routes: PAGES.map((page) => page.path),
-      crawlLinks: false,
-      failOnError: true,
-    },
+    ...(isLovableSandbox
+      ? {}
+      : {
+          prerender: {
+            routes: PAGES.map((page) => page.path),
+            crawlLinks: false,
+            failOnError: true,
+          },
+        }),
   } as { preset: string },
 });
