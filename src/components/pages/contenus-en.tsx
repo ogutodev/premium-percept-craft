@@ -148,10 +148,10 @@ export function ContenusPage() {
             style={{ animation: "var(--animate-reveal-up)", animationDelay: "420ms" }}
           >
             <div className="absolute left-0 top-0 w-[58%] aspect-[4/5] overflow-hidden rounded-[2rem] ring-1 ring-border shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
-              <img src={feedRestaurant} alt="" className="size-full object-cover" loading="eager" />
+              <img src={feedRestaurant} alt="Food reel produced by TRÍADE" className="size-full object-cover" loading="eager" />
             </div>
             <div className="absolute right-0 top-12 w-[44%] aspect-[9/16] overflow-hidden rounded-[1.75rem] ring-1 ring-border shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]">
-              <img src={feedAerial} alt="" className="size-full object-cover" />
+              <img src={feedAerial} alt="Aerial automotive shoot" className="size-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-widest">
                 <span className="text-accent">Reel · 00:18</span>
@@ -159,7 +159,7 @@ export function ContenusPage() {
               </div>
             </div>
             <div className="absolute bottom-0 left-8 w-[50%] aspect-square overflow-hidden rounded-[1.75rem] ring-1 ring-border shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]">
-              <img src={feedWatch} alt="" className="size-full object-cover" />
+              <img src={feedWatch} alt="Watch product film" className="size-full object-cover" />
             </div>
             <div className="absolute -right-2 bottom-16 hidden rounded-2xl bg-card/90 px-4 py-3 backdrop-blur ring-1 ring-border md:block">
               <p className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
