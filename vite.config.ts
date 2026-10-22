@@ -27,16 +27,15 @@ const isLovableSandbox =
 const ssrRendererPath = fileURLToPath(
   new URL("./node_modules/nitro/dist/runtime/internal/vite/ssr-renderer.mjs", import.meta.url),
 );
-type NitroLike = {
-  options: { buildDir: string };
-  hooks: { hook: (name: string, fn: (arg: any) => void) => void };
-};
-const connectSsrToPrerender = (nitro: NitroLike) => {
-  nitro.hooks.hook("prerender:config", (config: { renderer?: { handler?: string } }) => {
+type NitroRenderer = { options: { buildDir: string } };
+const connectSsrToPrerender = {
+  "prerender:config": (config: { renderer?: { handler?: string } }) => {
     config.renderer = { ...config.renderer, handler: ssrRendererPath };
-  });
-  nitro.hooks.hook("prerender:init", () => {
-    const entry = pathToFileURL(resolve(nitro.options.buildDir, "vite/services/ssr/index.js")).href;
+  },
+  "prerender:init": (renderer: NitroRenderer) => {
+    const entry = pathToFileURL(
+      resolve(renderer.options.buildDir, "vite/services/ssr/index.js"),
+    ).href;
     let mod: Promise<{ fetch: (req: Request) => Promise<Response> }> | undefined;
     const g = globalThis as { __nitro_vite_envs__?: Record<string, unknown> };
     g.__nitro_vite_envs__ = {
@@ -48,7 +47,7 @@ const connectSsrToPrerender = (nitro: NitroLike) => {
         },
       },
     };
-  });
+  },
 };
 
 export default defineConfig({
@@ -61,7 +60,7 @@ export default defineConfig({
     ...(isLovableSandbox
       ? {}
       : {
-          modules: [connectSsrToPrerender],
+          hooks: connectSsrToPrerender,
           prerender: {
             routes: PAGES.map((page) => page.path),
             crawlLinks: false,
