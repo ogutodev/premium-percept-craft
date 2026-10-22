@@ -1,13 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { projects } from "@/lib/projects";
+
+const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-12"];
+const aspects = ["aspect-16/10", "aspect-16/10 md:aspect-auto", "aspect-21/9"];
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import founder1 from "@/assets/founder-1.png";
 import founder2 from "@/assets/founder-2.png";
 import founder3 from "@/assets/founder-3.png";
-import workWatch from "@/assets/work-watch.jpg";
-import workFashion from "@/assets/work-fashion.jpg";
-import workVilla from "@/assets/work-villa.jpg";
-import workNoir from "@/assets/work-noir.jpg";
 import feedRestaurant from "@/assets/feed-restaurant.jpg";
 import feedWatch from "@/assets/feed-watch.jpg";
 import feedBoutique from "@/assets/feed-boutique.jpg";
@@ -21,6 +21,16 @@ import feedPhone from "@/assets/feed-phone.jpg";
 import feedWedding from "@/assets/feed-wedding.jpg";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "TRÍADE — Studio créatif cinématographique · Genève" },
+      { name: "description", content: "Film, photographie, branding et réseaux sociaux à Genève. TRÍADE transforme les entreprises en marques premium." },
+      { property: "og:title", content: "TRÍADE — Studio créatif cinématographique · Genève" },
+      { property: "og:description", content: "Récits visuels stratégiques pour les marques suisses." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: HomePage,
 });
 
@@ -57,70 +67,11 @@ const services = [
   },
 ];
 
-const works = [
-  {
-    src: workWatch,
-    title: "Chronos Heritage",
-    tag: "Branding · Film",
-    span: "md:col-span-8 md:row-span-2",
-    aspect: "aspect-16/10",
-  },
-  {
-    src: workFashion,
-    title: "Studio L'Art",
-    tag: "Direction créative",
-    span: "md:col-span-4 md:row-span-3",
-    aspect: "aspect-4/5",
-  },
-  {
-    src: workVilla,
-    title: "Alpine Heights",
-    tag: "Immobilier de prestige",
-    span: "md:col-span-5 md:row-span-2",
-    aspect: "aspect-square",
-  },
-  {
-    src: workNoir,
-    title: "Velocity Noir",
-    tag: "Cinématographie",
-    span: "md:col-span-7 md:row-span-2",
-    aspect: "aspect-16/9",
-  },
-];
-
-const stats = [
-  { value: "120+", label: "Projets livrés" },
-  { value: "40M+", label: "Portée totale" },
-  { value: "14", label: "Marques de luxe" },
-  { value: "08", label: "Distinctions" },
-];
-
 const process = [
   { n: "01", title: "Stratégie", body: "Diagnostic du positionnement, de l'audience et de l'écart visuel avec le leader du marché." },
   { n: "02", title: "Production", body: "Direction, lumière, lieu, casting — chaque plan pensé avec intention." },
   { n: "03", title: "Montage", body: "Couleur, son et rythme assemblés en récit que votre audience ne peut ignorer." },
   { n: "04", title: "Diffusion", body: "Distribution et amplification payante qui transforment vos contenus en présence mesurable." },
-];
-
-const testimonials = [
-  {
-    quote:
-      "TRÍADE n'a pas seulement filmé notre marque — ils ont reconfiguré la manière dont le marché nous perçoit. Les demandes ont doublé en soixante jours.",
-    name: "Élise Marchand",
-    role: "Fondatrice · Maison Marchand",
-  },
-  {
-    quote:
-      "Le niveau de goût et d'exécution évoque davantage une maison de couture parisienne qu'une agence de marketing.",
-    name: "Lukas Vogel",
-    role: "Directeur · Vogel Horlogerie",
-  },
-  {
-    quote:
-      "Chaque livrable a élevé notre standard. Notre marque a enfin l'allure que nous lui rêvions.",
-    name: "Anaïs Roux",
-    role: "CMO · Roux Architecture",
-  },
 ];
 
 function HomePage() {
@@ -217,32 +168,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* MÉTRIQUES D'AUTORITÉ */}
-      <section className="border-y border-border bg-secondary/40 px-6 py-12 md:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 md:flex-row md:items-center">
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-16">
-            {stats.map((s) => (
-              <div key={s.label} className="space-y-2">
-                <span className="block font-mono text-3xl text-accent">{s.value}</span>
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="hidden text-right md:block">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              Marques de confiance
-            </p>
-            <div className="mt-2 flex gap-6 opacity-60">
-              <span className="font-display text-sm italic">Horlogerie.</span>
-              <span className="font-display text-sm italic">Maison.</span>
-              <span className="font-display text-sm italic">Atelier.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* PORTFOLIO */}
       <section id="travaux" className="px-6 py-32 md:px-10 md:py-40">
         <div className="mx-auto max-w-7xl">
@@ -262,28 +187,32 @@ function HomePage() {
           </div>
 
           <div className="grid grid-cols-12 gap-4 md:gap-6">
-            {works.map((w, i) => (
-              <article
-                key={w.title}
-                className={`group relative col-span-12 cursor-pointer overflow-hidden rounded-[1.75rem] bg-card ring-1 ring-border ${w.span}`}
-                style={i === 1 ? { marginTop: "5rem" } : i === 2 ? { marginTop: "-5rem" } : undefined}
+            {projects.map((w, i) => (
+              <Link
+                key={w.slug}
+                to="/travaux/$slug"
+                params={{ slug: w.slug }}
+                className={`group relative col-span-12 overflow-hidden rounded-[1.75rem] bg-card ring-1 ring-border ${spans[i % spans.length]}`}
               >
-                <div className={`relative ${w.aspect} overflow-hidden`}>
+                <div className={`relative ${aspects[i % aspects.length]} h-full overflow-hidden`}>
                   <img
-                    src={w.src}
-                    alt={w.title}
+                    src={w.cover}
+                    alt={w.name}
                     loading="lazy"
                     className="size-full object-cover transition-transform duration-[1200ms] ease-[var(--ease-cinema)] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 transition-opacity duration-700 group-hover:opacity-100" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                     <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-accent">
-                      {w.tag}
+                      {w.service} · {w.location}
                     </p>
-                    <h3 className="font-display text-2xl italic md:text-3xl">{w.title}</h3>
+                    <h3 className="font-display text-2xl italic md:text-3xl">{w.name}</h3>
+                    <span className="mt-3 inline-block font-mono text-[10px] uppercase tracking-widest text-muted-foreground transition-colors group-hover:text-foreground">
+                      Voir l'étude de cas →
+                    </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
@@ -342,7 +271,7 @@ function HomePage() {
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] ring-1 ring-border shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
               <img
-                src={founder2}
+                src={founder1}
                 alt="Augusto Sousa, fondateur et directeur créatif de TRÍADE"
                 className="size-full object-cover"
               />
@@ -369,7 +298,7 @@ function HomePage() {
               <p>
                 Augusto Sousa est le fondateur et directeur créatif de TRÍADE. Entrepreneur basé en
                 Suisse, il dirige chaque projet avec une exigence d'auteur — du premier brief
-                stratégique à la dernière étalonnage couleur.
+                stratégique au dernier étalonnage couleur.
               </p>
               <p>
                 Sa conviction est simple : une marque ne se construit pas en publiant davantage,
@@ -407,7 +336,7 @@ function HomePage() {
       <section className="relative border-y border-border px-6 py-32 md:px-10 md:py-48">
         <div className="mx-auto max-w-5xl">
           <span className="mb-10 block text-center font-mono text-[10px] uppercase tracking-[0.4em] text-accent">
-            03 — Le dilemme
+            04 — Le dilemme
           </span>
           <h2 className="text-balance text-center font-display text-4xl leading-[1.05] md:text-7xl">
             Un bon contenu ne suffit plus.
@@ -468,7 +397,7 @@ function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 space-y-4">
             <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
-              04 — Méthode
+              05 — Méthode
             </span>
             <h2 className="font-display text-4xl italic md:text-6xl">Un processus cinématographique.</h2>
           </div>
@@ -507,7 +436,7 @@ function HomePage() {
           <div className="mb-16 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
             <div className="space-y-4">
               <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">
-                05 — Présence sociale
+                06 — Présence sociale
               </span>
               <h2 className="font-display text-4xl italic leading-[1.05] md:text-6xl">
                 Contenus pensés
@@ -531,11 +460,8 @@ function HomePage() {
                 <span className="size-1.5 rounded-full bg-red-500" /> Reel
               </div>
               <div className="absolute inset-x-3 bottom-3 space-y-1">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">@maison.gastronomie</p>
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Reel · Gastronomie</p>
                 <p className="font-display text-base italic leading-tight">L'art de la table.</p>
-                <div className="flex items-center gap-3 pt-1 font-mono text-[9px] text-muted-foreground">
-                  <span>♥ 12.4k</span><span>↗ 842</span>
-                </div>
               </div>
             </article>
 
@@ -547,7 +473,7 @@ function HomePage() {
                 Campagne
               </div>
               <div className="absolute inset-x-4 bottom-4">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Chronos Heritage · 2025</p>
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Campagne · Horlogerie</p>
                 <p className="mt-1 font-display text-xl italic md:text-2xl">Le temps comme signature.</p>
               </div>
             </article>
@@ -573,7 +499,7 @@ function HomePage() {
                 <p className="font-display text-sm italic leading-snug">
                   « Une marque qui se regarde. Pas qui se scrolle. »
                 </p>
-                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">+ 42% de portée</p>
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Post sponsorisé</p>
               </div>
             </article>
 
@@ -583,7 +509,7 @@ function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               <div className="absolute inset-x-4 bottom-4">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Retail · Direction</p>
-                <p className="mt-1 font-display text-lg italic">Studio L'Art</p>
+                <p className="mt-1 font-display text-lg italic">Univers boutique</p>
               </div>
             </article>
 
@@ -595,11 +521,8 @@ function HomePage() {
                 4K · Drone
               </div>
               <div className="absolute inset-x-3 bottom-3 space-y-1">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Velocity Noir</p>
+                <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Reel · Automobile</p>
                 <p className="font-display text-base italic leading-tight">Cinéma de marque.</p>
-                <div className="flex items-center gap-3 pt-1 font-mono text-[9px] text-muted-foreground">
-                  <span>▶ 284k vues</span>
-                </div>
               </div>
             </article>
 
@@ -645,7 +568,7 @@ function HomePage() {
                 <div>
                   <p className="font-display text-2xl italic leading-tight md:text-3xl">Une marque qu'on attend.</p>
                   <p className="mt-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
-                    Maison Marchand · Noël 25
+                    Reel · Fêtes de fin d'année
                   </p>
                 </div>
               </div>
@@ -672,52 +595,6 @@ function HomePage() {
             </article>
           </div>
 
-          {/* Bandeau métriques sociales */}
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-[1.5rem] bg-border ring-1 ring-border md:grid-cols-4 md:mt-16">
-            {[
-              { v: "+340%", l: "Portée moyenne" },
-              { v: "12M", l: "Vues générées" },
-              { v: "98%", l: "Rétention 3s" },
-              { v: "x4", l: "Engagement client" },
-            ].map((m) => (
-              <div key={m.l} className="bg-background p-6 md:p-8">
-                <p className="font-mono text-2xl text-accent md:text-3xl">{m.v}</p>
-                <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {m.l}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TÉMOIGNAGES */}
-      <section className="border-y border-border bg-secondary/30 px-6 py-32 md:px-10 md:py-40">
-        <div className="mx-auto max-w-7xl">
-          <span className="mb-20 block font-mono text-[10px] uppercase tracking-widest text-accent">
-            06 — Voix
-          </span>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-16">
-            {testimonials.map((t) => (
-              <figure
-                key={t.name}
-                className="space-y-8 rounded-[2rem] border border-border bg-card/40 p-8 md:p-10"
-              >
-                <span className="block font-display text-5xl italic leading-none text-accent">
-                  &ldquo;
-                </span>
-                <blockquote className="text-balance text-lg leading-relaxed text-foreground/90 md:text-xl">
-                  {t.quote}
-                </blockquote>
-                <figcaption className="border-t border-border pt-6">
-                  <div className="font-display text-lg italic">{t.name}</div>
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                    {t.role}
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
         </div>
       </section>
 
