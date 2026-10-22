@@ -13,8 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as ContenusRouteImport } from './routes/contenus'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnConfidentialiteRouteImport } from './routes/en.confidentialite'
+import { Route as EnContenusRouteImport } from './routes/en.contenus'
+import { Route as EnSolutionsRouteImport } from './routes/en.solutions'
+import { Route as PtIndexRouteImport } from './routes/pt.index'
 import { Route as PtConfidentialiteRouteImport } from './routes/pt.confidentialite'
+import { Route as PtContenusRouteImport } from './routes/pt.contenus'
+import { Route as PtSolutionsRouteImport } from './routes/pt.solutions'
 import { Route as TravauxSlugRouteImport } from './routes/travaux.$slug'
 import { Route as EnTravauxSlugRouteImport } from './routes/en.travaux.$slug'
 import { Route as PtTravauxSlugRouteImport } from './routes/pt.travaux.$slug'
@@ -39,14 +45,44 @@ const SolutionsRoute = SolutionsRouteImport.update({
   path: '/solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/en/',
+  path: '/en/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnConfidentialiteRoute = EnConfidentialiteRouteImport.update({
   id: '/en/confidentialite',
   path: '/en/confidentialite',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnContenusRoute = EnContenusRouteImport.update({
+  id: '/en/contenus',
+  path: '/en/contenus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnSolutionsRoute = EnSolutionsRouteImport.update({
+  id: '/en/solutions',
+  path: '/en/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtIndexRoute = PtIndexRouteImport.update({
+  id: '/pt/',
+  path: '/pt/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PtConfidentialiteRoute = PtConfidentialiteRouteImport.update({
   id: '/pt/confidentialite',
   path: '/pt/confidentialite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtContenusRoute = PtContenusRouteImport.update({
+  id: '/pt/contenus',
+  path: '/pt/contenus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtSolutionsRoute = PtSolutionsRouteImport.update({
+  id: '/pt/solutions',
+  path: '/pt/solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TravauxSlugRoute = TravauxSlugRouteImport.update({
@@ -71,8 +107,14 @@ export interface FileRoutesByFullPath {
   '/contenus': typeof ContenusRoute
   '/solutions': typeof SolutionsRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
+  '/en/contenus': typeof EnContenusRoute
+  '/en/solutions': typeof EnSolutionsRoute
   '/pt/confidentialite': typeof PtConfidentialiteRoute
+  '/pt/contenus': typeof PtContenusRoute
+  '/pt/solutions': typeof PtSolutionsRoute
   '/travaux/$slug': typeof TravauxSlugRoute
+  '/en/': typeof EnIndexRoute
+  '/pt/': typeof PtIndexRoute
   '/en/travaux/$slug': typeof EnTravauxSlugRoute
   '/pt/travaux/$slug': typeof PtTravauxSlugRoute
 }
@@ -82,8 +124,14 @@ export interface FileRoutesByTo {
   '/contenus': typeof ContenusRoute
   '/solutions': typeof SolutionsRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
+  '/en/contenus': typeof EnContenusRoute
+  '/en/solutions': typeof EnSolutionsRoute
   '/pt/confidentialite': typeof PtConfidentialiteRoute
+  '/pt/contenus': typeof PtContenusRoute
+  '/pt/solutions': typeof PtSolutionsRoute
   '/travaux/$slug': typeof TravauxSlugRoute
+  '/en': typeof EnIndexRoute
+  '/pt': typeof PtIndexRoute
   '/en/travaux/$slug': typeof EnTravauxSlugRoute
   '/pt/travaux/$slug': typeof PtTravauxSlugRoute
 }
@@ -94,8 +142,14 @@ export interface FileRoutesById {
   '/contenus': typeof ContenusRoute
   '/solutions': typeof SolutionsRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
+  '/en/contenus': typeof EnContenusRoute
+  '/en/solutions': typeof EnSolutionsRoute
   '/pt/confidentialite': typeof PtConfidentialiteRoute
+  '/pt/contenus': typeof PtContenusRoute
+  '/pt/solutions': typeof PtSolutionsRoute
   '/travaux/$slug': typeof TravauxSlugRoute
+  '/en/': typeof EnIndexRoute
+  '/pt/': typeof PtIndexRoute
   '/en/travaux/$slug': typeof EnTravauxSlugRoute
   '/pt/travaux/$slug': typeof PtTravauxSlugRoute
 }
@@ -107,8 +161,14 @@ export interface FileRouteTypes {
     | '/contenus'
     | '/solutions'
     | '/en/confidentialite'
+    | '/en/contenus'
+    | '/en/solutions'
     | '/pt/confidentialite'
+    | '/pt/contenus'
+    | '/pt/solutions'
     | '/travaux/$slug'
+    | '/en/'
+    | '/pt/'
     | '/en/travaux/$slug'
     | '/pt/travaux/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -118,8 +178,14 @@ export interface FileRouteTypes {
     | '/contenus'
     | '/solutions'
     | '/en/confidentialite'
+    | '/en/contenus'
+    | '/en/solutions'
     | '/pt/confidentialite'
+    | '/pt/contenus'
+    | '/pt/solutions'
     | '/travaux/$slug'
+    | '/en'
+    | '/pt'
     | '/en/travaux/$slug'
     | '/pt/travaux/$slug'
   id:
@@ -129,8 +195,14 @@ export interface FileRouteTypes {
     | '/contenus'
     | '/solutions'
     | '/en/confidentialite'
+    | '/en/contenus'
+    | '/en/solutions'
     | '/pt/confidentialite'
+    | '/pt/contenus'
+    | '/pt/solutions'
     | '/travaux/$slug'
+    | '/en/'
+    | '/pt/'
     | '/en/travaux/$slug'
     | '/pt/travaux/$slug'
   fileRoutesById: FileRoutesById
@@ -141,8 +213,14 @@ export interface RootRouteChildren {
   ContenusRoute: typeof ContenusRoute
   SolutionsRoute: typeof SolutionsRoute
   EnConfidentialiteRoute: typeof EnConfidentialiteRoute
+  EnContenusRoute: typeof EnContenusRoute
+  EnSolutionsRoute: typeof EnSolutionsRoute
   PtConfidentialiteRoute: typeof PtConfidentialiteRoute
+  PtContenusRoute: typeof PtContenusRoute
+  PtSolutionsRoute: typeof PtSolutionsRoute
   TravauxSlugRoute: typeof TravauxSlugRoute
+  EnIndexRoute: typeof EnIndexRoute
+  PtIndexRoute: typeof PtIndexRoute
   EnTravauxSlugRoute: typeof EnTravauxSlugRoute
   PtTravauxSlugRoute: typeof PtTravauxSlugRoute
 }
@@ -177,6 +255,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/': {
+      id: '/en/'
+      path: '/en'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/confidentialite': {
       id: '/en/confidentialite'
       path: '/en/confidentialite'
@@ -184,11 +269,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnConfidentialiteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/contenus': {
+      id: '/en/contenus'
+      path: '/en/contenus'
+      fullPath: '/en/contenus'
+      preLoaderRoute: typeof EnContenusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/solutions': {
+      id: '/en/solutions'
+      path: '/en/solutions'
+      fullPath: '/en/solutions'
+      preLoaderRoute: typeof EnSolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/': {
+      id: '/pt/'
+      path: '/pt'
+      fullPath: '/pt/'
+      preLoaderRoute: typeof PtIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pt/confidentialite': {
       id: '/pt/confidentialite'
       path: '/pt/confidentialite'
       fullPath: '/pt/confidentialite'
       preLoaderRoute: typeof PtConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/contenus': {
+      id: '/pt/contenus'
+      path: '/pt/contenus'
+      fullPath: '/pt/contenus'
+      preLoaderRoute: typeof PtContenusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/solutions': {
+      id: '/pt/solutions'
+      path: '/pt/solutions'
+      fullPath: '/pt/solutions'
+      preLoaderRoute: typeof PtSolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/travaux/$slug': {
@@ -221,8 +341,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContenusRoute: ContenusRoute,
   SolutionsRoute: SolutionsRoute,
   EnConfidentialiteRoute: EnConfidentialiteRoute,
+  EnContenusRoute: EnContenusRoute,
+  EnSolutionsRoute: EnSolutionsRoute,
   PtConfidentialiteRoute: PtConfidentialiteRoute,
+  PtContenusRoute: PtContenusRoute,
+  PtSolutionsRoute: PtSolutionsRoute,
   TravauxSlugRoute: TravauxSlugRoute,
+  EnIndexRoute: EnIndexRoute,
+  PtIndexRoute: PtIndexRoute,
   EnTravauxSlugRoute: EnTravauxSlugRoute,
   PtTravauxSlugRoute: PtTravauxSlugRoute,
 }
