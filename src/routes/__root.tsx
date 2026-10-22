@@ -12,6 +12,8 @@ import type { ErrorComponentProps } from "@tanstack/react-router";
 import { PageLoader } from "@/components/page-loader";
 import { MotionRuntime } from "@/components/motion-runtime";
 
+import { useLocale } from "@/lib/i18n";
+
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -101,8 +103,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const locale = useLocale();
   return (
-    <html lang="fr">
+    <html lang={locale === "fr" ? "fr-CH" : locale === "pt" ? "pt-BR" : "en"}>
       <head>
         <HeadContent />
       </head>
