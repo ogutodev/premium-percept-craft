@@ -1,13 +1,31 @@
-import { seoLinks, type Locale } from "@/lib/i18n";
+import { SITE_URL, seoLinks, type Locale } from "@/lib/i18n";
 
-type PageKey = "home" | "solutions" | "contenus" | "privacy";
-const PATHS: Record<PageKey, string> = { home: "/", solutions: "/solutions", contenus: "/contenus", privacy: "/confidentialite" };
+export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+
+export const businessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "TRÍADE Marketing et Publicité",
+  url: SITE_URL,
+  image: OG_IMAGE,
+  logo: OG_IMAGE,
+  telephone: "+41789670537",
+  email: "info@triadepublicite.ch",
+  address: { "@type": "PostalAddress", addressLocality: "Genève", addressRegion: "GE", addressCountry: "CH" },
+  areaServed: [{ "@type": "Place", name: "Suisse romande" }, { "@type": "City", name: "Genève" }],
+  sameAs: ["https://www.instagram.com/triadepublicite/"],
+  knowsLanguage: ["fr", "pt"],
+  serviceType: ["Branding", "Production vidéo", "Photographie", "Gestion des réseaux sociaux", "Création de site internet", "Publicité digitale"],
+};
+
+type PageKey = "home" | "solutions" | "contenus" | "privacy" | "impressum";
+const PATHS: Record<PageKey, string> = { home: "/", solutions: "/solutions", contenus: "/contenus", privacy: "/confidentialite", impressum: "/impressum" };
 
 const TEXT: Record<PageKey, Record<Locale, { title: string; description: string }>> = {
   home: {
-    fr: { title: "TRÍADE — Studio créatif cinématographique · Genève", description: "Film, photographie, branding et réseaux sociaux à Genève. TRÍADE transforme les entreprises en marques premium." },
-    pt: { title: "TRÍADE — Estúdio criativo cinematográfico · Genebra", description: "Filme, fotografia, branding e redes sociais em Genebra. A TRÍADE transforma empresas em marcas premium." },
-    en: { title: "TRÍADE — Cinematic creative studio · Geneva", description: "Film, photography, branding and social media in Geneva. TRÍADE turns businesses into premium brands." },
+    fr: { title: "TRÍADE — Agence marketing & production vidéo à Genève", description: "Studio créatif à Genève : branding, production vidéo, photographie et réseaux sociaux pour marques premium. Français · Português." },
+    pt: { title: "TRÍADE — Agência de marketing e produção de vídeo em Genebra", description: "Estúdio criativo em Genebra: branding, produção de vídeo, fotografia e redes sociais para marcas premium. Français · Português." },
+    en: { title: "TRÍADE — Marketing & video production agency in Geneva", description: "Creative studio in Geneva: branding, video production, photography and social media for premium brands. Français · Português." },
   },
   solutions: {
     fr: { title: "Solutions — Marketing Digital, Production & Branding à Genève | TRÍADE", description: "Gestion des réseaux sociaux, production vidéo, photographie, branding, sites internet et publicité digitale à Genève." },
@@ -18,6 +36,11 @@ const TEXT: Record<PageKey, Record<Locale, { title: string; description: string 
     fr: { title: "Contenus — TRÍADE · Studio créatif Genève", description: "Campagnes de marque, films, reels, photographie éditoriale et direction artistique pour les marques d'exception." },
     pt: { title: "Conteúdos — TRÍADE · Estúdio criativo em Genebra", description: "Campanhas de marca, filmes, reels, fotografia editorial e direção de arte para marcas excepcionais." },
     en: { title: "Content — TRÍADE · Creative studio Geneva", description: "Brand campaigns, films, reels, editorial photography and art direction for exceptional brands." },
+  },
+  impressum: {
+    fr: { title: "Impressum — TRÍADE Marketing et Publicité, Genève", description: "Mentions légales de TRÍADE Marketing et Publicité, studio créatif à Genève." },
+    pt: { title: "Impressum — TRÍADE Marketing et Publicité, Genebra", description: "Informações legais da TRÍADE Marketing et Publicité, estúdio criativo em Genebra." },
+    en: { title: "Impressum — TRÍADE Marketing et Publicité, Geneva", description: "Legal notice of TRÍADE Marketing et Publicité, creative studio in Geneva." },
   },
   privacy: {
     fr: { title: "Politique de confidentialité — TRÍADE", description: "Comment TRÍADE traite les données transmises via le formulaire de contact." },
@@ -36,8 +59,14 @@ export function pageHead(page: PageKey, locale: Locale) {
       { property: "og:description", content: t.description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: locale === "fr" ? "fr_CH" : locale === "pt" ? "pt_BR" : "en_US" },
+      { property: "og:url", content: SITE_URL + (locale === "fr" ? PATHS[page] : `/${locale}${PATHS[page] === "/" ? "" : PATHS[page]}`) },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: seoLinks(locale, PATHS[page]),
+    scripts: page === "home" ? [{ type: "application/ld+json", children: JSON.stringify(businessJsonLd) }] : [],
   };
 }
