@@ -1,15 +1,15 @@
 import logo from "@/assets/triade-logo.png";
+import { lp, ui, useLocale } from "@/lib/i18n";
 
 export function SiteFooter() {
+  const locale = useLocale();
+  const t = ui[locale].footer;
   return (
-    <footer id="contact" className="border-t border-border px-6 py-16 md:px-10 md:py-20">
+    <footer className="border-t border-border px-6 py-16 md:px-10 md:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:justify-between">
         <div className="space-y-6">
           <img src={logo} alt="TRÍADE Marketing et Publicité" className="h-16 w-auto" />
-          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Studio créatif suisse. Nous façonnons l'image des marques d'exception à travers la
-            narration cinématographique et la direction artistique.
-          </p>
+          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">{t.blurb}</p>
           <div className="flex gap-6">
             <a
               href="https://instagram.com/triadepublicite"
@@ -22,31 +22,29 @@ export function SiteFooter() {
 
         <div className="grid grid-cols-2 gap-12 md:gap-20">
           <div className="space-y-4">
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">Contact</h4>
+            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">{t.contact}</h4>
             <a href="https://wa.me/41789670537" target="_blank" rel="noreferrer" className="block text-sm transition-colors hover:text-accent">
               WhatsApp · +41 78 967 05 37
             </a>
-            <a
-              href="mailto:info@triadepublicite.ch"
-              className="block text-sm transition-colors hover:text-accent"
-            >
+            <a href="mailto:info@triadepublicite.ch" className="block text-sm transition-colors hover:text-accent">
               info@triadepublicite.ch
             </a>
           </div>
           <div className="space-y-4">
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">Studio</h4>
+            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">{t.studio}</h4>
             <p className="text-sm leading-relaxed">
-              Genève
+              {t.city}
               <br />
-              Suisse
+              {t.country}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto mt-20 flex max-w-7xl items-center justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+      <div className="mx-auto mt-20 flex max-w-7xl items-center justify-between gap-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
         <span>© 2026 TRÍADE Marketing et Publicité</span>
-        <span className="hidden md:inline">Façonneurs d'autorité</span>
+        <a href={lp(locale, "/confidentialite")} className="transition-colors hover:text-accent">{t.privacy}</a>
+        <span className="hidden md:inline">{t.tagline}</span>
       </div>
     </footer>
   );
