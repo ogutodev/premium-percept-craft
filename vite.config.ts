@@ -14,7 +14,7 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
     pages: PAGES,
-    prerender: { enabled: true, autoStaticPathsDiscovery: false },
+    prerender: { enabled: true, autoStaticPathsDiscovery: false, maxRedirects: 3 },
   },
   nitro: {
     preset: "node-server",
