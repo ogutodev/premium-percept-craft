@@ -1,16 +1,16 @@
 import { useMemo, useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import workWatch from "@/assets/work-watch.jpg";
-import workFashion from "@/assets/work-fashion.jpg";
-import workVilla from "@/assets/work-villa.jpg";
-import workNoir from "@/assets/work-noir.jpg";
-import feedRestaurant from "@/assets/feed-restaurant.jpg";
-import feedAerialCar from "@/assets/feed-aerial-car.jpg";
-import feedBoutique from "@/assets/feed-boutique.jpg";
-import feedEditing from "@/assets/feed-editing.jpg";
-import feedCampaignNoel from "@/assets/feed-campaign-noel.jpg";
-import feedPhone from "@/assets/feed-phone.jpg";
+import workWatch from "@/assets/work-watch.webp";
+import workFashion from "@/assets/work-fashion.webp";
+import workVilla from "@/assets/work-villa.webp";
+import workNoir from "@/assets/work-noir.webp";
+import feedRestaurant from "@/assets/feed-restaurant.webp";
+import feedAerialCar from "@/assets/feed-aerial-car.webp";
+import feedBoutique from "@/assets/feed-boutique.webp";
+import feedEditing from "@/assets/feed-editing.webp";
+import feedCampaignNoel from "@/assets/feed-campaign-noel.webp";
+import feedPhone from "@/assets/feed-phone.webp";
 
 
 type Solution = {

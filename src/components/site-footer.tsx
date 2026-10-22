@@ -1,4 +1,4 @@
-import logo from "@/assets/triade-logo.png";
+import logo from "@/assets/triade-logo.webp";
 import { lp, ui, useLocale } from "@/lib/i18n";
 
 export function SiteFooter() {

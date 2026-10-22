@@ -1,11 +1,11 @@
-import workWatch from "@/assets/work-watch.jpg";
-import workFashion from "@/assets/work-fashion.jpg";
-import workVilla from "@/assets/work-villa.jpg";
-import workNoir from "@/assets/work-noir.jpg";
-import feedRestaurant from "@/assets/feed-restaurant.jpg";
-import feedFood from "@/assets/feed-food.jpg";
-import feedBoutique from "@/assets/feed-boutique.jpg";
-import feedEditing from "@/assets/feed-editing.jpg";
+import workWatch from "@/assets/work-watch.webp";
+import workFashion from "@/assets/work-fashion.webp";
+import workVilla from "@/assets/work-villa.webp";
+import workNoir from "@/assets/work-noir.webp";
+import feedRestaurant from "@/assets/feed-restaurant.webp";
+import feedFood from "@/assets/feed-food.webp";
+import feedBoutique from "@/assets/feed-boutique.webp";
+import feedEditing from "@/assets/feed-editing.webp";
 
 // Études de cas — remplacez les textes entre [crochets] par le contenu réel.
 export type Project = {

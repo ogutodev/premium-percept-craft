@@ -7,20 +7,20 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { ContactSection, BookCallButton } from "@/components/contact-section";
 import { ShowreelMedia } from "@/components/showreel-media";
-import founder1 from "@/assets/founder-1.png";
-import founder2 from "@/assets/founder-2.png";
-import founder3 from "@/assets/founder-3.png";
-import feedRestaurant from "@/assets/feed-restaurant.jpg";
-import feedWatch from "@/assets/feed-watch.jpg";
-import feedBoutique from "@/assets/feed-boutique.jpg";
-import feedFood from "@/assets/feed-food.jpg";
-import feedAerialCar from "@/assets/feed-aerial-car.jpg";
-import feedBtsCamera from "@/assets/feed-bts-camera.jpg";
-import feedEditing from "@/assets/feed-editing.jpg";
-import feedCampaignNoel from "@/assets/feed-campaign-noel.jpg";
-import feedEvent from "@/assets/feed-event.jpg";
-import feedPhone from "@/assets/feed-phone.jpg";
-import feedWedding from "@/assets/feed-wedding.jpg";
+import founder1 from "@/assets/founder-1.webp";
+import founder2 from "@/assets/founder-2.webp";
+import founder3 from "@/assets/founder-3.webp";
+import feedRestaurant from "@/assets/feed-restaurant.webp";
+import feedWatch from "@/assets/feed-watch.webp";
+import feedBoutique from "@/assets/feed-boutique.webp";
+import feedFood from "@/assets/feed-food.webp";
+import feedAerialCar from "@/assets/feed-aerial-car.webp";
+import feedBtsCamera from "@/assets/feed-bts-camera.webp";
+import feedEditing from "@/assets/feed-editing.webp";
+import feedCampaignNoel from "@/assets/feed-campaign-noel.webp";
+import feedEvent from "@/assets/feed-event.webp";
+import feedPhone from "@/assets/feed-phone.webp";
+import feedWedding from "@/assets/feed-wedding.webp";
 
 
 const services = [

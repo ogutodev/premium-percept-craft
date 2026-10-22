@@ -1,22 +1,22 @@
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import feedRestaurant from "@/assets/feed-restaurant.jpg";
-import feedBts from "@/assets/feed-bts-camera.jpg";
-import feedNoel from "@/assets/feed-campaign-noel.jpg";
-import feedClient from "@/assets/feed-client-portrait.jpg";
-import feedWatch from "@/assets/feed-watch.jpg";
-import feedEditing from "@/assets/feed-editing.jpg";
-import feedAerial from "@/assets/feed-aerial-car.jpg";
-import feedFood from "@/assets/feed-food.jpg";
-import feedPhone from "@/assets/feed-phone.jpg";
-import feedWedding from "@/assets/feed-wedding.jpg";
-import feedEvent from "@/assets/feed-event.jpg";
-import feedBoutique from "@/assets/feed-boutique.jpg";
-import workWatch from "@/assets/work-watch.jpg";
-import workFashion from "@/assets/work-fashion.jpg";
-import workVilla from "@/assets/work-villa.jpg";
-import workNoir from "@/assets/work-noir.jpg";
-import founder1 from "@/assets/founder-1.png";
+import feedRestaurant from "@/assets/feed-restaurant.webp";
+import feedBts from "@/assets/feed-bts-camera.webp";
+import feedNoel from "@/assets/feed-campaign-noel.webp";
+import feedClient from "@/assets/feed-client-portrait.webp";
+import feedWatch from "@/assets/feed-watch.webp";
+import feedEditing from "@/assets/feed-editing.webp";
+import feedAerial from "@/assets/feed-aerial-car.webp";
+import feedFood from "@/assets/feed-food.webp";
+import feedPhone from "@/assets/feed-phone.webp";
+import feedWedding from "@/assets/feed-wedding.webp";
+import feedEvent from "@/assets/feed-event.webp";
+import feedBoutique from "@/assets/feed-boutique.webp";
+import workWatch from "@/assets/work-watch.webp";
+import workFashion from "@/assets/work-fashion.webp";
+import workVilla from "@/assets/work-villa.webp";
+import workNoir from "@/assets/work-noir.webp";
+import founder1 from "@/assets/founder-1.webp";
 
 
 type Tile = {
