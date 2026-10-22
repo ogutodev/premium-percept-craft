@@ -22,5 +22,5 @@ export default defineConfig({
       crawlLinks: false,
       failOnError: true,
     },
-  },
+  } as { preset: string },
 });
