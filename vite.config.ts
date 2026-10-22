@@ -13,10 +13,14 @@ const PAGES = ["", "/pt", "/en"].flatMap((pre) =>
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
-    pages: PAGES,
-    prerender: { enabled: true, autoStaticPathsDiscovery: false, maxRedirects: 3 },
+    prerender: { enabled: false },
   },
   nitro: {
     preset: "node-server",
-  },
+    prerender: {
+      routes: PAGES.map((page) => page.path),
+      crawlLinks: false,
+      failOnError: true,
+    },
+  } as { preset: string },
 });
