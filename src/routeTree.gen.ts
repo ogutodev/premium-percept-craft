@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as ContenusRouteImport } from './routes/contenus'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnConfidentialiteRouteImport } from './routes/en.confidentialite'
 import { Route as EnContenusRouteImport } from './routes/en.contenus'
@@ -49,6 +51,11 @@ const ImpressumRoute = ImpressumRouteImport.update({
   path: '/impressum',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -59,6 +66,12 @@ const SolutionsRoute = SolutionsRouteImport.update({
   path: '/solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EnIndexRoute = EnIndexRouteImport.update({
   id: '/en/',
   path: '/en/',
@@ -130,8 +143,10 @@ export interface FileRoutesByFullPath {
   '/confidentialite': typeof ConfidentialiteRoute
   '/contenus': typeof ContenusRoute
   '/impressum': typeof ImpressumRoute
+  '/mcp': typeof McpRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
   '/en/contenus': typeof EnContenusRoute
   '/en/impressum': typeof EnImpressumRoute
@@ -151,8 +166,10 @@ export interface FileRoutesByTo {
   '/confidentialite': typeof ConfidentialiteRoute
   '/contenus': typeof ContenusRoute
   '/impressum': typeof ImpressumRoute
+  '/mcp': typeof McpRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
   '/en/contenus': typeof EnContenusRoute
   '/en/impressum': typeof EnImpressumRoute
@@ -173,8 +190,10 @@ export interface FileRoutesById {
   '/confidentialite': typeof ConfidentialiteRoute
   '/contenus': typeof ContenusRoute
   '/impressum': typeof ImpressumRoute
+  '/mcp': typeof McpRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/en/confidentialite': typeof EnConfidentialiteRoute
   '/en/contenus': typeof EnContenusRoute
   '/en/impressum': typeof EnImpressumRoute
@@ -196,8 +215,10 @@ export interface FileRouteTypes {
     | '/confidentialite'
     | '/contenus'
     | '/impressum'
+    | '/mcp'
     | '/sitemap.xml'
     | '/solutions'
+    | '/.well-known/oauth-protected-resource'
     | '/en/confidentialite'
     | '/en/contenus'
     | '/en/impressum'
@@ -217,8 +238,10 @@ export interface FileRouteTypes {
     | '/confidentialite'
     | '/contenus'
     | '/impressum'
+    | '/mcp'
     | '/sitemap.xml'
     | '/solutions'
+    | '/.well-known/oauth-protected-resource'
     | '/en/confidentialite'
     | '/en/contenus'
     | '/en/impressum'
@@ -238,8 +261,10 @@ export interface FileRouteTypes {
     | '/confidentialite'
     | '/contenus'
     | '/impressum'
+    | '/mcp'
     | '/sitemap.xml'
     | '/solutions'
+    | '/.well-known/oauth-protected-resource'
     | '/en/confidentialite'
     | '/en/contenus'
     | '/en/impressum'
@@ -260,8 +285,10 @@ export interface RootRouteChildren {
   ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContenusRoute: typeof ContenusRoute
   ImpressumRoute: typeof ImpressumRoute
+  McpRoute: typeof McpRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   EnConfidentialiteRoute: typeof EnConfidentialiteRoute
   EnContenusRoute: typeof EnContenusRoute
   EnImpressumRoute: typeof EnImpressumRoute
@@ -307,6 +334,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpressumRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -319,6 +353,13 @@ declare module '@tanstack/react-router' {
       path: '/solutions'
       fullPath: '/solutions'
       preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en/': {
@@ -420,8 +461,11 @@ const rootRouteChildren: RootRouteChildren = {
   ConfidentialiteRoute: ConfidentialiteRoute,
   ContenusRoute: ContenusRoute,
   ImpressumRoute: ImpressumRoute,
+  McpRoute: McpRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   EnConfidentialiteRoute: EnConfidentialiteRoute,
   EnContenusRoute: EnContenusRoute,
   EnImpressumRoute: EnImpressumRoute,
