@@ -6,6 +6,7 @@ const aspects = ["aspect-16/10", "aspect-16/10 md:aspect-auto", "aspect-21/9"];
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import founder1 from "@/assets/founder-1.png";
+import founder2 from "@/assets/founder-2.png";
 import founder3 from "@/assets/founder-3.png";
 import feedRestaurant from "@/assets/feed-restaurant.jpg";
 import feedWatch from "@/assets/feed-watch.jpg";
@@ -20,6 +21,16 @@ import feedPhone from "@/assets/feed-phone.jpg";
 import feedWedding from "@/assets/feed-wedding.jpg";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "TRÍADE — Studio créatif cinématographique · Genève" },
+      { name: "description", content: "Film, photographie, branding et réseaux sociaux à Genève. TRÍADE transforme les entreprises en marques premium." },
+      { property: "og:title", content: "TRÍADE — Studio créatif cinématographique · Genève" },
+      { property: "og:description", content: "Récits visuels stratégiques pour les marques suisses." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: HomePage,
 });
 

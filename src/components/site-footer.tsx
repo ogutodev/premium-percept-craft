@@ -17,12 +17,6 @@ export function SiteFooter() {
             >
               Instagram
             </a>
-            <a href="#" className="font-mono text-xs uppercase text-muted-foreground transition-colors hover:text-accent">
-              LinkedIn
-            </a>
-            <a href="#" className="font-mono text-xs uppercase text-muted-foreground transition-colors hover:text-accent">
-              Vimeo
-            </a>
           </div>
         </div>
 
