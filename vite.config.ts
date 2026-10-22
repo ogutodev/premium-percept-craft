@@ -2,6 +2,7 @@
 // Do not add TanStack, React, Tailwind or Nitro manually.
 
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -51,6 +52,7 @@ const connectSsrToPrerender = {
 };
 
 export default defineConfig({
+  vite: { plugins: [mcpPlugin()] },
   tanstackStart: {
     server: { entry: "server" },
     prerender: { enabled: false },
