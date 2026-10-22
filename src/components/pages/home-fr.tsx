@@ -5,6 +5,8 @@ const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-12"];
 const aspects = ["aspect-16/10", "aspect-16/10 md:aspect-auto", "aspect-21/9"];
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { ContactSection, BookCallButton } from "@/components/contact-section";
+import { ShowreelMedia } from "@/components/showreel-media";
 import founder1 from "@/assets/founder-1.png";
 import founder2 from "@/assets/founder-2.png";
 import founder3 from "@/assets/founder-3.png";
@@ -103,14 +105,14 @@ export function HomePage() {
                 TRÍADE conçoit des récits visuels stratégiques qui transforment les entreprises en
                 marques premium d'autorité.
               </p>
+              <p className="-mt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-accent md:mt-0">
+                Studio bilingue français · portugais, ancré à Genève.
+              </p>
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-3 rounded-full bg-foreground px-7 py-4 text-xs font-medium uppercase tracking-widest text-background transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
+                <BookCallButton className="inline-flex items-center gap-3 rounded-full bg-foreground px-7 py-4 text-xs font-medium uppercase tracking-widest text-background transition-colors hover:bg-accent hover:text-accent-foreground">
                   Réserver un appel
                   <span aria-hidden>→</span>
-                </a>
+                </BookCallButton>
                 <a
                   href="#travaux"
                   className="inline-flex items-center gap-3 rounded-full border border-foreground/25 px-7 py-4 text-xs font-medium uppercase tracking-widest transition-colors hover:border-foreground"
@@ -126,11 +128,7 @@ export function HomePage() {
             style={{ animation: "var(--animate-reveal-up)", animationDelay: "450ms" }}
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-card shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)] ring-1 ring-border">
-              <img
-                src={founder3}
-                alt="Fondateur de TRÍADE en pleine direction de tournage"
-                className="size-full object-cover"
-              />
+              <ShowreelMedia poster={founder3} alt="Fondateur de TRÍADE en pleine direction de tournage" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6">
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
@@ -373,6 +371,12 @@ export function HomePage() {
                   {s.title}
                 </h3>
                 <p className="mt-4 max-w-md leading-relaxed opacity-70">{s.body}</p>
+                <a
+                  href="/solutions"
+                  className="mt-6 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest opacity-70 transition-all hover:gap-3 hover:text-accent hover:opacity-100"
+                >
+                  En savoir plus <span aria-hidden>→</span>
+                </a>
               </div>
             ))}
           </div>
@@ -616,6 +620,7 @@ export function HomePage() {
         </div>
       </section>
 
+      <ContactSection />
       <SiteFooter />
     </div>
   );
