@@ -10,3 +10,14 @@ export const SHOWREEL: { webm: string | null; mp4: string | null } = { webm: nul
 
 export const WHATSAPP_URL = "https://wa.me/41789670537";
 export const CONTACT_EMAIL = "info@triadepublicite.ch";
+
+/** Impressum — à compléter. Les champs vides ne sont pas affichés. */
+export const LEGAL = {
+  /** Forme juridique, ex. « Entreprise individuelle » ou « Sàrl » */
+  legalForm: "",
+  /** Adresse postale. Vide = « Genève, sur rendez-vous » */
+  address: "",
+  /** Numéro IDE/UID, ex. « CHE-123.456.789 » */
+  uid: "",
+  owner: "Augusto Sousa",
+};
