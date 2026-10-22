@@ -228,7 +228,7 @@ export function HomePage() {
 
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             <div className="col-span-12 md:col-span-7 relative aspect-[4/5] md:aspect-[16/11] overflow-hidden rounded-[2rem] ring-1 ring-border">
-              <img src={founder1} alt="Direction artistique en plateau" className="size-full object-cover" />
+              <img loading="lazy" src={founder1} alt="Direction artistique en plateau" className="size-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">Backstage · 02:14</p>
@@ -237,7 +237,7 @@ export function HomePage() {
             </div>
             <div className="col-span-12 md:col-span-5 grid grid-cols-1 gap-4 md:gap-6">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] ring-1 ring-border">
-                <img src={founder2} alt="Cadrage et composition cinématographique" className="size-full object-cover" />
+                <img loading="lazy" src={founder2} alt="Cadrage et composition cinématographique" className="size-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
               <div className="rounded-[2rem] bg-card p-8 ring-1 ring-border">
@@ -257,7 +257,7 @@ export function HomePage() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] ring-1 ring-border shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
-              <img
+              <img loading="lazy"
                 src={founder1}
                 alt="Augusto Sousa, fondateur et directeur créatif de TRÍADE"
                 className="size-full object-cover"
@@ -447,7 +447,7 @@ export function HomePage() {
           <div className="grid grid-cols-12 gap-3 md:gap-5">
             {/* Reel vertical — restaurant */}
             <article className="group relative col-span-6 md:col-span-3 row-span-2 aspect-[9/16] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedRestaurant} alt="Reel gastronomie" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedRestaurant} alt="Reel gastronomie" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-background/30" />
               <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-background/70 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-foreground backdrop-blur">
                 <span className="size-1.5 rounded-full bg-red-500" /> Reel
@@ -460,7 +460,7 @@ export function HomePage() {
 
             {/* Campagne large — horlogerie */}
             <article className="group relative col-span-6 md:col-span-5 aspect-[4/3] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedWatch} alt="Campagne horlogerie" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedWatch} alt="Campagne horlogerie" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-tr from-background/80 via-background/10 to-transparent" />
               <div className="absolute left-4 top-4 rounded-full bg-foreground px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-background">
                 Campagne
@@ -473,7 +473,7 @@ export function HomePage() {
 
             {/* Mockup phone — Instagram UI */}
             <article className="group relative col-span-12 md:col-span-4 aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-card ring-1 ring-border">
-              <img src={feedPhone} alt="Maquette Instagram" className="size-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedPhone} alt="Maquette Instagram" className="size-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-br from-background/70 via-background/50 to-background/80" />
               {/* Faux post UI */}
               <div className="absolute left-4 top-4 right-4 flex items-center gap-2">
@@ -498,7 +498,7 @@ export function HomePage() {
 
             {/* Boutique landscape */}
             <article className="group relative col-span-6 md:col-span-4 aspect-[5/4] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedBoutique} alt="Direction artistique boutique" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedBoutique} alt="Direction artistique boutique" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               <div className="absolute inset-x-4 bottom-4">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Retail · Direction</p>
@@ -508,7 +508,7 @@ export function HomePage() {
 
             {/* Reel vertical — voiture */}
             <article className="group relative col-span-6 md:col-span-3 row-span-2 aspect-[9/16] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedAerialCar} alt="Production automobile aérienne" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedAerialCar} alt="Production automobile aérienne" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-background/30" />
               <div className="absolute right-3 top-3 rounded-full bg-accent px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-accent-foreground">
                 4K · Drone
@@ -521,7 +521,7 @@ export function HomePage() {
 
             {/* BTS caméra */}
             <article className="group relative col-span-12 md:col-span-3 aspect-square overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedBtsCamera} alt="Coulisses de tournage" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedBtsCamera} alt="Coulisses de tournage" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent" />
               <div className="absolute left-3 top-3 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-foreground">
                 <span className="size-1.5 animate-pulse rounded-full bg-accent" /> Tournage
@@ -534,7 +534,7 @@ export function HomePage() {
 
             {/* Food éditorial */}
             <article className="group relative col-span-6 md:col-span-3 aspect-square overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedFood} alt="Éditorial gastronomique" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedFood} alt="Éditorial gastronomique" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/75 to-transparent" />
               <div className="absolute inset-x-3 bottom-3">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Photographie</p>
@@ -544,7 +544,7 @@ export function HomePage() {
 
             {/* Editing process */}
             <article className="group relative col-span-6 md:col-span-3 aspect-square overflow-hidden rounded-[1.5rem] ring-1 ring-border bg-card">
-              <img src={feedEditing} alt="Studio de montage" className="size-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedEditing} alt="Studio de montage" className="size-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/85 to-background/10" />
               <div className="absolute inset-x-3 bottom-3 space-y-1">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Post-production</p>
@@ -554,7 +554,7 @@ export function HomePage() {
 
             {/* Campagne Noël — large */}
             <article className="group relative col-span-12 md:col-span-6 aspect-[16/9] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedCampaignNoel} alt="Campagne saisonnière" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedCampaignNoel} alt="Campagne saisonnière" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" />
               <div className="absolute inset-y-0 left-0 flex flex-col justify-between p-5 md:p-7 max-w-[60%]">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Campagne saisonnière</p>
@@ -569,7 +569,7 @@ export function HomePage() {
 
             {/* Event */}
             <article className="group relative col-span-6 md:col-span-3 aspect-[4/5] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedEvent} alt="Événement de marque" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedEvent} alt="Événement de marque" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               <div className="absolute inset-x-3 bottom-3">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Événement</p>
@@ -579,7 +579,7 @@ export function HomePage() {
 
             {/* Wedding / lifestyle */}
             <article className="group relative col-span-6 md:col-span-3 aspect-[4/5] overflow-hidden rounded-[1.5rem] ring-1 ring-border">
-              <img src={feedWedding} alt="Reportage lifestyle" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" src={feedWedding} alt="Reportage lifestyle" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               <div className="absolute inset-x-3 bottom-3">
                 <p className="font-mono text-[9px] uppercase tracking-widest text-accent">Lifestyle</p>

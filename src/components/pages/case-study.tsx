@@ -22,7 +22,7 @@ export function CaseStudyPage({ project: p }: { project: Project }) {
       </section>
       <div className="px-6 md:px-10">
         <div className="mx-auto aspect-[16/9] max-w-7xl overflow-hidden rounded-[2rem] ring-1 ring-border">
-          <img src={p.cover} alt={p.name} className="size-full object-cover" />
+          <img loading="lazy" src={p.cover} alt={p.name} className="size-full object-cover" />
         </div>
       </div>
       <section className="px-6 py-24 md:px-10">

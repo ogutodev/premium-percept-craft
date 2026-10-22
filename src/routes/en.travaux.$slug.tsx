@@ -5,6 +5,7 @@ import { seoLinks } from "@/lib/i18n";
 import { OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/en/travaux/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();

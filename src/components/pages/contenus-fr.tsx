@@ -373,7 +373,7 @@ export function ContenusPage() {
 
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             <div className="col-span-12 md:col-span-7 relative aspect-[16/10] overflow-hidden rounded-[2rem] ring-1 ring-border">
-              <img src={feedBts} alt="Tournage en plateau" className="size-full object-cover" />
+              <img loading="lazy" src={feedBts} alt="Tournage en plateau" className="size-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
@@ -385,7 +385,7 @@ export function ContenusPage() {
 
             <div className="col-span-12 md:col-span-5 grid grid-cols-1 gap-4 md:gap-6">
               <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] ring-1 ring-border">
-                <img src={feedEditing} alt="Salle d'étalonnage" className="size-full object-cover" />
+                <img loading="lazy" src={feedEditing} alt="Salle d'étalonnage" className="size-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="font-mono text-[10px] uppercase tracking-widest text-accent">
@@ -395,7 +395,7 @@ export function ContenusPage() {
                 </div>
               </div>
               <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] ring-1 ring-border">
-                <img src={founder1} alt="Direction créative TRÍADE" className="size-full object-cover" />
+                <img loading="lazy" src={founder1} alt="Direction créative TRÍADE" className="size-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="font-mono text-[10px] uppercase tracking-widest text-accent">
