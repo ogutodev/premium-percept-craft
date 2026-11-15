@@ -227,7 +227,7 @@
 .js-motion [data-rules].is-revealed .rule-top::before { transform: scaleX(1); }
 
 /* Hero on load */
-.hw { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .04em; }
+.hw { display: inline-block; overflow: hidden; vertical-align: bottom; padding-top: .14em; margin-top: -.14em; padding-bottom: .04em; }
 .hw > span { display: inline-block; }
 .js-motion .hw > span { animation: hw-rise .7s var(--ease) both; animation-delay: calc(var(--i, 0) * 60ms); }
 .js-motion .hero-fade { animation: fade-up .7s var(--ease) both; animation-delay: .45s; }

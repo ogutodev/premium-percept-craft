@@ -22,13 +22,17 @@ export function MotionRuntime() {
         for (const e of entries) {
           if (e.isIntersecting) {
             e.target.classList.add("is-revealed");
+            // clip-path hides the element from IO, so [data-clip] is observed via its parent.
+            e.target.querySelectorAll(":scope > [data-clip]").forEach((c) => c.classList.add("is-revealed"));
             io.unobserve(e.target);
           }
         }
       },
       { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
-    document.querySelectorAll(`:is(${SEL}):not(.is-revealed)`).forEach((el) => io.observe(el));
+    document.querySelectorAll(`:is(${SEL}):not(.is-revealed)`).forEach((el) => {
+      io.observe(el.hasAttribute("data-clip") && el.parentElement ? el.parentElement : el);
+    });
     return () => io.disconnect();
   }, [pathname]);
   return null;
