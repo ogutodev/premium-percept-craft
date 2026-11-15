@@ -1,68 +1,154 @@
+import { useCallback, useEffect, useRef, useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import { lp, ui, useLocale } from "@/lib/i18n";
-import type { Project } from "@/lib/projects";
+import { MetaRow } from "@/components/brand";
+import { lp, useLocale } from "@/lib/i18n";
+import type { Photo, Project } from "@/lib/projects";
+
+function Lightbox({ photos, index, onClose, onMove }: { photos: Photo[]; index: number; onClose: () => void; onMove: (d: number) => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    ref.current?.querySelector<HTMLElement>("button")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowRight") onMove(1);
+      else if (e.key === "ArrowLeft") onMove(-1);
+      else if (e.key === "Tab") {
+        const f = Array.from(ref.current?.querySelectorAll<HTMLElement>("button") ?? []);
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [onClose, onMove]);
+  const p = photos[index];
+  const btn = "inline-flex size-12 items-center justify-center border-2 border-white text-2xl text-white";
+  return (
+    <div ref={ref} role="dialog" aria-modal="true" aria-label="Galerie photo" className="on-dark fixed inset-0 z-[80] flex flex-col bg-azul-profundo p-4 md:p-8">
+      <div className="flex items-center justify-between text-nevoa">
+        <span className="meta text-nevoa">{index + 1} / {photos.length}</span>
+        <button type="button" onClick={onClose} aria-label="Fermer la galerie" className={btn}>×</button>
+      </div>
+      <figure className="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 py-4">
+        <img src={p.src} alt={p.alt} width={p.w} height={p.h} className="max-h-full min-h-0 max-w-full object-contain" />
+        <figcaption className="text-center text-[14px] text-nevoa">{p.alt}</figcaption>
+      </figure>
+      <div className="flex justify-center gap-4">
+        <button type="button" onClick={() => onMove(-1)} aria-label="Photo précédente" className={btn}>←</button>
+        <button type="button" onClick={() => onMove(1)} aria-label="Photo suivante" className={btn}>→</button>
+      </div>
+    </div>
+  );
+}
 
 export function CaseStudyPage({ project: p }: { project: Project }) {
   const locale = useLocale();
-  const t = ui[locale].case;
+  const [open, setOpen] = useState<number | null>(null);
+  const triggers = useRef<(HTMLButtonElement | null)[]>([]);
+  const portrait = p.coverPhoto.h > p.coverPhoto.w;
+  const close = useCallback(() => {
+    setOpen((i) => {
+      if (i !== null) setTimeout(() => triggers.current[i]?.focus(), 0);
+      return null;
+    });
+  }, []);
+  const move = useCallback((d: number) => setOpen((i) => (i === null ? i : (i + d + p.gallery.length) % p.gallery.length)), [p.gallery.length]);
+
+  const cover = (
+    <div className={`frame overflow-hidden ${portrait ? "aspect-[2/3]" : "aspect-video"}`}>
+      <img src={p.coverPhoto.src} alt={p.coverPhoto.alt} width={p.coverPhoto.w} height={p.coverPhoto.h} fetchPriority="high" decoding="async" className="size-full object-cover object-top" />
+    </div>
+  );
+
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+    <div className="min-h-screen bg-superficie text-tinta">
       <SiteNav />
-      <section className="px-6 pt-36 pb-16 md:px-10 md:pt-44">
-        <div className="mx-auto max-w-7xl space-y-6">
-          <a href={lp(locale, "/#travaux")} className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:text-accent">
-            {t.back}
-          </a>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-accent">
-            {p.service} · {p.location}
-          </p>
-          <h1 className="font-display">{p.name}</h1>
-        </div>
-      </section>
-      <div className="px-6 md:px-10">
-        <div className="mx-auto aspect-[16/9] max-w-7xl overflow-hidden rounded-[2rem] ring-1 ring-border">
-          <img src={p.cover} alt={p.name} className="size-full object-cover" />
-        </div>
-      </div>
-      <section className="px-6 py-24 md:px-10">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-2">
-          <div className="space-y-4">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-accent">01 — {t.challenge}</span>
-            <p className="text-lg leading-relaxed text-muted-foreground">{p.challenge}</p>
-          </div>
-          <div className="space-y-4">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-accent">02 — {t.approach}</span>
-            <p className="text-lg leading-relaxed text-muted-foreground">{p.approach}</p>
-          </div>
-          <div className="space-y-4 rounded-[2rem] border border-border bg-card/40 p-8">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-accent">03 — {t.deliverables}</span>
-            <ul className="space-y-2">{p.deliverables.map((d) => <li key={d}>{d}</li>)}</ul>
-          </div>
-          <div className="space-y-4 rounded-[2rem] border border-border bg-card/40 p-8">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-accent">04 — {t.results}</span>
-            <ul className="space-y-2">{p.results.map((r) => <li key={r}>{r}</li>)}</ul>
-          </div>
-        </div>
-      </section>
-      <section className="px-6 pb-32 md:px-10">
-        <div className="mx-auto max-w-7xl space-y-8">
-          <span className="block font-mono text-[10px] uppercase tracking-widest text-accent">05 — {t.gallery}</span>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-            {p.gallery.map((src, i) => (
-              <div key={i} className="group aspect-[4/5] overflow-hidden rounded-[1.75rem] ring-1 ring-border">
-                <img src={src} alt={`${p.name} — visuel ${i + 1}`} loading="lazy" className="img-zoom size-full object-cover" />
+      <main id="main">
+        <section className="section-y !pt-10">
+          <div className="wrap">
+            <nav aria-label="Fil d’Ariane" className="mb-8 text-[14px]">
+              <ol className="flex flex-wrap items-center gap-2 text-suave">
+                <li><a href={lp(locale, "/")} className="underline hover:text-azul">Accueil</a></li>
+                <li aria-hidden>›</li>
+                <li><a href={lp(locale, "/#realisations")} className="underline hover:text-azul">Réalisations</a></li>
+                <li aria-hidden>›</li>
+                <li aria-current="page" className="font-semibold text-azul">{p.name}</li>
+              </ol>
+            </nav>
+            <MetaRow items={["Étude de cas", p.service, p.location]} />
+            <div className={`mt-10 grid items-start gap-12 ${portrait ? "lg:grid-cols-[1fr_minmax(0,400px)]" : ""}`}>
+              <div className="space-y-8">
+                <h1>{p.name}</h1>
+                <div className="grid gap-10 md:grid-cols-2">
+                  <div className="rule-top">
+                    <h2 className="t-cond !text-[28px]">Le défi</h2>
+                    <p className="mt-3">{p.challenge}</p>
+                  </div>
+                  <div className="rule-top">
+                    <h2 className="t-cond !text-[28px]">Notre approche</h2>
+                    <p className="mt-3">{p.approach}</p>
+                  </div>
+                </div>
+                <div>
+                  <h2 className="meta !text-[13px] !leading-normal">Livrables</h2>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {p.deliverables.map((d) => <li key={d} className="chip">{d}</li>)}
+                  </ul>
+                </div>
+                {p.results.length > 0 && (
+                  <div>
+                    <h2 className="meta !text-[13px] !leading-normal">Résultats</h2>
+                    <ul className="mt-3 list-disc pl-5">{p.results.map((r) => <li key={r}>{r}</li>)}</ul>
+                  </div>
+                )}
               </div>
-            ))}
+              {portrait && <div className="mx-auto w-full max-w-[400px]">{cover}</div>}
+            </div>
+            {!portrait && <div className="mt-14">{cover}</div>}
           </div>
-          <div className="pt-8 text-center">
-            <a href="https://wa.me/41789670537" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-xs uppercase tracking-widest text-accent-foreground">
-              {t.cta}
+        </section>
+
+        <section className="section-y bg-white" aria-labelledby="galerie">
+          <div className="wrap">
+            <MetaRow items={["Galerie", `${p.gallery.length} photos`]} />
+            <h2 id="galerie" className="sr-only">Galerie</h2>
+            <ul data-reveal-stagger className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+              {p.gallery.map((g, i) => (
+                <li key={g.src} className={g.w > g.h && i === 0 ? "col-span-2" : ""}>
+                  <button
+                    ref={(el) => { triggers.current[i] = el; }}
+                    type="button"
+                    onClick={() => setOpen(i)}
+                    aria-label={`Agrandir : ${g.alt}`}
+                    className="card-pop block w-full border-[3px] border-azul bg-white"
+                  >
+                    <img src={g.src} alt={g.alt} width={g.w} height={g.h} loading="lazy" decoding="async" sizes="(min-width:768px) 33vw, 50vw" className={`w-full object-cover ${g.h > g.w ? "aspect-[2/3]" : "aspect-[3/2]"}`} />
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <a href={lp(locale, "/#realisations")} className="link-u mt-12">← Toutes les réalisations</a>
+          </div>
+        </section>
+
+        <section className="on-dark bg-azul py-16 text-white">
+          <div className="wrap flex flex-wrap items-center justify-between gap-6">
+            <p className="t-cond text-[clamp(36px,5vw,64px)]">Un projet similaire&nbsp;?</p>
+            <a href={lp(locale, "/#diagnostic")} className="inline-flex min-h-14 items-center bg-white px-7 text-[15px] font-bold uppercase tracking-[1px] text-azul shadow-[10px_10px_0_var(--color-lima)]">
+              Parlons-en <span className="arr ml-2">→</span>
             </a>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
       <SiteFooter />
+      {open !== null && <Lightbox photos={p.gallery} index={open} onClose={close} onMove={move} />}
     </div>
   );
 }
