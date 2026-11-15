@@ -8,17 +8,21 @@ export const contactSchema = z.object({
   company: z.string().trim().min(1).max(160),
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(40).optional().default(""),
-  project_type: z.string().trim().min(1).max(60),
-  budget: z.string().trim().min(1).max(60),
+  project_type: z.string().trim().max(200).optional().default(""),
+  budget: z.string().trim().max(60).optional().default(""),
   timeline: z.string().trim().max(120).optional().default(""),
-  message: z.string().trim().min(1).max(3000),
+  message: z.string().trim().max(3000).optional().default(""),
   consent: z.literal(true),
   locale: z.enum(["fr", "pt", "en"]),
+  /** Honeypot — must stay empty. */
+  website: z.string().max(200).optional().default(""),
 });
 
 export const submitContact = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => contactSchema.parse(input))
   .handler(async ({ data }) => {
+    // Bots fill the hidden field: pretend success, store nothing.
+    if (data.website) return { ok: true };
     const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
     const sb = createClient<Database>(process.env["SUPABASE_URL"]!, key, {
       auth: { persistSession: false },
@@ -31,10 +35,15 @@ export const submitContact = createServerFn({ method: "POST" })
         },
       },
     });
+    const { website: _hp, ...row } = data;
     const { error } = await sb.from("contact_submissions").insert({
-      ...data,
-      phone: data.phone || null,
-      timeline: data.timeline || null,
+      ...row,
+      project_type: row.project_type || "Diagnostic 2027",
+      // budget and message are NOT NULL in the table.
+      budget: row.budget || "—",
+      message: row.message || "—",
+      phone: row.phone || null,
+      timeline: row.timeline || null,
     });
     if (error) {
       console.error("contact insert failed", error.message);
