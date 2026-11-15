@@ -7,7 +7,7 @@ import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 // All public pages are identical for every visitor, so they are prerendered to HTML.
-const SLUGS = ["espresso-club", "projet-2", "projet-3"];
+const SLUGS = ["espresso-club", "us-geneve-ville"];
 const BASE = ["/", "/solutions", "/contenus", "/impressum", "/confidentialite", ...SLUGS.map((s) => `/travaux/${s}`)];
 const PAGES = ["", "/pt", "/en"].flatMap((pre) =>
   BASE.map((p) => ({ path: pre ? (p === "/" ? pre : pre + p) : p })),

@@ -1,53 +1,55 @@
-import logo from "@/assets/triade-logo.webp";
-import { lp, ui, useLocale } from "@/lib/i18n";
+import logo from "@/assets/logo-triade-blanc.webp";
+import { LOCALES, lp, stripLocale, useLocale } from "@/lib/i18n";
+import { useRouterState } from "@tanstack/react-router";
+import { CONTACT_EMAIL, WHATSAPP_URL } from "@/lib/site-config";
 
 export function SiteFooter() {
   const locale = useLocale();
-  const t = ui[locale].footer;
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const base = stripLocale(pathname);
+  const a = (id: string) => lp(locale, `/#${id}`);
+  const links: [string, string][] = [
+    ["Services", a("services")],
+    ["Réalisations", a("realisations")],
+    ["Méthode", a("methode")],
+    ["FAQ", a("faq")],
+    ["Contact", a("diagnostic")],
+  ];
   return (
-    <footer className="border-t border-border px-6 py-16 md:px-10 md:py-20">
-      <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:justify-between">
-        <div className="space-y-6">
-          <img src={logo} alt="TRÍADE Marketing et Publicité" className="h-16 w-auto" />
-          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">{t.blurb}</p>
-          <div className="flex gap-6">
-            <a
-              href="https://instagram.com/triadepublicite"
-              className="font-mono text-xs uppercase text-muted-foreground transition-colors hover:text-accent"
-            >
-              Instagram
-            </a>
-          </div>
+    <footer className="on-dark bg-azul-profundo text-nevoa">
+      <div className="wrap grid gap-12 py-16 md:grid-cols-[1.2fr_1fr_1fr]">
+        <div className="space-y-4">
+          <img src={logo} alt="TRÍADE" width={58} height={44} loading="lazy" decoding="async" className="h-11 w-auto" />
+          <p>Marketing &amp; publicité · Genève, Suisse</p>
         </div>
-
-        <div className="grid grid-cols-2 gap-12 md:gap-20">
-          <div className="space-y-4">
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">{t.contact}</h4>
-            <a href="https://wa.me/41789670537" target="_blank" rel="noreferrer" className="block text-sm transition-colors hover:text-accent">
-              WhatsApp · +41 78 967 05 37
+        <nav aria-label="Pied de page" className="flex flex-col">
+          {links.map(([l, h]) => (
+            <a key={l} href={h} className="inline-flex min-h-11 items-center text-[14px] font-semibold uppercase tracking-[1.5px] text-white hover:underline">
+              {l}
             </a>
-            <a href="mailto:info@triadepublicite.ch" className="block text-sm transition-colors hover:text-accent">
-              info@triadepublicite.ch
-            </a>
-          </div>
-          <div className="space-y-4">
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent">{t.studio}</h4>
-            <p className="text-sm leading-relaxed">
-              {t.city}
-              <br />
-              {t.country}
-            </p>
-          </div>
+          ))}
+          <a href="https://www.instagram.com/triadepublicite/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-[14px] font-semibold uppercase tracking-[1.5px] text-white hover:underline">
+            Instagram
+          </a>
+        </nav>
+        <div className="flex flex-col">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex min-h-11 items-center text-white hover:underline">{CONTACT_EMAIL}</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-white hover:underline">WhatsApp +41 78 967 05 37</a>
         </div>
       </div>
-
-      <div className="mx-auto mt-20 flex max-w-7xl items-center justify-between gap-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-        <span>© 2026 TRÍADE Marketing et Publicité</span>
-        <span className="flex gap-6">
-          <a href={lp(locale, "/impressum")} className="transition-colors hover:text-accent">Impressum</a>
-          <a href={lp(locale, "/confidentialite")} className="transition-colors hover:text-accent">{t.privacy}</a>
-        </span>
-        <span className="hidden md:inline">{t.tagline}</span>
+      <div className="border-t border-tinta">
+        <div className="wrap flex flex-wrap items-center justify-between gap-4 py-5 text-[14px]">
+          <span>© 2026 TRÍADE Marketing &amp; Publicité</span>
+          <span className="flex flex-wrap items-center gap-x-4">
+            <a href={lp(locale, "/impressum")} className="inline-flex min-h-11 items-center hover:text-white">Impressum</a>
+            <a href={lp(locale, "/confidentialite")} className="inline-flex min-h-11 items-center hover:text-white">Confidentialité</a>
+            {LOCALES.map((l) => (
+              <a key={l} href={lp(l, base)} hrefLang={l} aria-current={l === locale ? "true" : undefined} className={`inline-flex min-h-11 items-center uppercase ${l === locale ? "font-bold text-white" : "hover:text-white"}`}>
+                {l}
+              </a>
+            ))}
+          </span>
+        </div>
       </div>
     </footer>
   );

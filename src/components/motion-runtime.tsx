@@ -1,58 +1,39 @@
 import { useEffect } from "react";
+import { useRouterState } from "@tanstack/react-router";
 
-/**
- * Global scroll-reveal: any element with `data-reveal` fades + lifts when it
- * enters the viewport. Disabled when the user prefers reduced motion.
- * Mounts once at the root.
- */
+const SEL = "[data-reveal],[data-reveal-stagger],[data-logos],[data-clip],[data-rules],.hl";
+
+/** One-shot IntersectionObserver reveals. Hidden states only exist under html.js-motion. */
 export function MotionRuntime() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // Auto-reveal every <section> on the home/content pages unless opted out.
-    const sections = document.querySelectorAll<HTMLElement>("section");
-    sections.forEach((el) => {
-      if (!el.hasAttribute("data-reveal") && !el.hasAttribute("data-no-reveal")) {
-        el.setAttribute("data-reveal", "");
-      }
+    const root = document.documentElement;
+    if (!root.classList.contains("js-motion")) return;
+    document.querySelectorAll<HTMLElement>("[data-reveal-stagger],[data-logos],[data-rules]").forEach((g) => {
+      Array.from(g.children).forEach((c, i) => (c as HTMLElement).style.setProperty("--i", String(i)));
+      g.querySelectorAll<HTMLElement>(".rule-top").forEach((c, i) => c.style.setProperty("--i", String(i)));
     });
-
-    if (reduce) {
-      document
-        .querySelectorAll<HTMLElement>("[data-reveal]")
-        .forEach((el) => el.classList.add("is-revealed"));
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll(SEL).forEach((el) => el.classList.add("is-revealed"));
       return;
     }
-
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed");
-            io.unobserve(entry.target);
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-revealed");
+            // clip-path hides the element from IO, so [data-clip] is observed via its parent.
+            e.target.querySelectorAll(":scope > [data-clip]").forEach((c) => c.classList.add("is-revealed"));
+            io.unobserve(e.target);
           }
-        });
+        }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
-
-    const observe = () =>
-      document
-        .querySelectorAll<HTMLElement>("[data-reveal]:not(.is-revealed)")
-        .forEach((el) => io.observe(el));
-
-    observe();
-    // Re-observe shortly after route transitions add new DOM.
-    const t = window.setInterval(observe, 800);
-    const stop = window.setTimeout(() => window.clearInterval(t), 6000);
-
-    return () => {
-      io.disconnect();
-      window.clearInterval(t);
-      window.clearTimeout(stop);
-    };
-  }, []);
-
+    document.querySelectorAll(`:is(${SEL}):not(.is-revealed)`).forEach((el) => {
+      io.observe(el.hasAttribute("data-clip") && el.parentElement ? el.parentElement : el);
+    });
+    return () => io.disconnect();
+  }, [pathname]);
   return null;
 }
