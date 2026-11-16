@@ -13,6 +13,8 @@ import { MotionRuntime } from "@/components/motion-runtime";
 
 import { useLocale } from "@/lib/i18n";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "@/lib/seo";
+import { isPreviewHost } from "@/lib/host";
 
 import appCss from "../styles.css?url";
 
@@ -75,25 +77,35 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   staticData: { sitemap: false },
-  head: () => ({
+  loader: () => ({ noindex: isPreviewHost() }),
+  head: ({ loaderData }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TRÍADE — Studio créatif cinématographique · Genève" },
-      { name: "description", content: "TRÍADE conçoit des récits visuels stratégiques qui transforment les entreprises en marques premium. Film, photographie, branding et publicité depuis Genève." },
-      { name: "author", content: "TRÍADE Marketing et Publicité" },
-      { property: "og:title", content: "TRÍADE — Studio créatif cinématographique · Genève" },
-      { property: "og:description", content: "Récits visuels stratégiques qui transforment les entreprises en marques premium." },
+      { title: DEFAULT_TITLE },
+      { name: "description", content: DEFAULT_DESCRIPTION },
+      { name: "author", content: "TRÍADE Marketing & Publicité" },
+      { name: "theme-color", content: "#01366C" },
+      { property: "og:site_name", content: "TRÍADE" },
+      { property: "og:title", content: DEFAULT_TITLE },
+      { property: "og:description", content: DEFAULT_DESCRIPTION },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: DEFAULT_TITLE },
+      { name: "twitter:description", content: DEFAULT_DESCRIPTION },
+      ...(loaderData?.noindex ? [{ name: "robots", content: "noindex, nofollow" }] : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: "/icon-192.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@1&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&family=Instrument+Serif:ital@1&display=swap",
       },
     ],
     scripts: [

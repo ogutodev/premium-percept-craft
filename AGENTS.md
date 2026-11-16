@@ -6,7 +6,7 @@
 - Editable links/media (Calendly URL, showreel files) live in `src/lib/site-config.ts`. Why: single place to fill in owner-provided values.
 - Case-study content lives in `src/lib/projects.ts` (French only for now).
 - Prerender: Nitro (node-server, external builds only) prerenders every public page listed in `vite.config.ts` `PAGES` (per locale, incl. case-study slugs); the `connectSsrToPrerender` hooks must stay because Nitro's prerender server otherwise lacks the TanStack SSR service and 404s. Router uses `trailingSlash: "preserve"`. Add new pages/slugs there. Why: Google gets full HTML without JS.
-- Sitemap: `src/routes/sitemap[.]xml.ts` derives static URLs from each route's required `staticData.sitemap`; case-study slugs come from `src/lib/projects.ts`.
+- Sitemap: `src/routes/sitemap[.]xml.ts` derives static URLs from each route's required `staticData.sitemap` (+ case-study slugs from `src/lib/projects.ts`), adds hreflang alternates and per-page `LASTMOD`. All absolute URLs use `SITE_URL` (custom domain) in `src/lib/i18n.ts`; the root loader adds robots noindex on *.lovable.app hosts (`src/lib/host.ts`). Why: previews must never compete with the real domain.
 - Images: assets are WebP; below-the-fold `<img>` use `loading="lazy"`, hero images stay eager.
 - Design system: light Swiss editorial tokens + helper classes (.wrap, .meta-row, .hl, .btn-pill, .card-box, .frame, .chip) live in `src/styles.css`; `<Highlight>`/`<MetaRow>` in `src/components/brand.tsx`. Motion hidden states only apply under `html.js-motion` (set by an inline head script) and are revealed by `MotionRuntime`. Why: content stays visible without JS and with reduced motion.
 - Case studies only list real projects; empty `results` hides the section. Why: no invented content.
