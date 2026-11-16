@@ -52,7 +52,11 @@ const connectSsrToPrerender = {
 };
 
 export default defineConfig({
-  vite: { plugins: [mcpPlugin()] },
+  vite: {
+    plugins: [mcpPlugin()],
+    // mcp-js dynamically imports "cloudflare:workers" (guarded by catch); keep it external for Node builds.
+    ...(isLovableSandbox ? {} : { build: { rollupOptions: { external: ["cloudflare:workers"] } } }),
+  },
   tanstackStart: {
     server: { entry: "server" },
     prerender: { enabled: false },
@@ -63,6 +67,7 @@ export default defineConfig({
       ? {}
       : {
           hooks: connectSsrToPrerender,
+          rollupConfig: { external: ["cloudflare:workers"] },
           prerender: {
             routes: PAGES.map((page) => page.path),
             crawlLinks: false,
