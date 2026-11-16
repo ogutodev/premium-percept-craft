@@ -30,7 +30,7 @@ export function WorkPage() {
             <div data-reveal-stagger className="mt-10 grid gap-10 md:grid-cols-2">
               {projects.map((p) => (
                 <article key={p.slug} className="card-box card-pop flex flex-col p-5">
-                  <img src={p.coverPhoto.src} alt={p.coverPhoto.alt} width={p.coverPhoto.w} height={p.coverPhoto.h} loading="lazy" decoding="async" sizes="(min-width:768px) 600px, 100vw" className="aspect-[16/10] w-full border-[3px] border-azul object-cover object-top" />
+                  <div data-zoom className="aspect-[16/10] overflow-hidden border-[3px] border-azul"><img src={p.coverPhoto.src} alt={p.coverPhoto.alt} width={p.coverPhoto.w} height={p.coverPhoto.h} loading="lazy" decoding="async" sizes="(min-width:768px) 600px, 100vw" className="size-full object-cover object-top" /></div>
                   <p className="meta mt-5">{p.location}</p>
                   <h3 className="t-cond mt-2 text-[clamp(36px,4vw,52px)]">{p.name}</h3>
                   <p className="mt-2 font-semibold text-azul">{p.service}</p>
