@@ -1,5 +1,5 @@
 import { SITE_URL, seoLinks, lp, LOCALES, type Locale } from "@/lib/i18n";
-import { FAQ_FR } from "@/components/pages/home-fr";
+import { FAQ_FR } from "@/lib/faq";
 import type { Project } from "@/lib/projects";
 
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
