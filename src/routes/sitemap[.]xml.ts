@@ -29,7 +29,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             if (path) paths.add(path);
           }
         }
-        const urls = [...paths].sort().map((path) => {
+        const urls = [...new Set([...paths].map((p) => (p.length > 1 ? p.replace(/\/$/, "") : p)))].sort().map((path) => {
           const fr = stripLocale(path);
           const alts = LOCALES.map(
             (l) => `<xhtml:link rel="alternate" hreflang="${HREFLANG_CODES[l]}" href="${esc(SITE_URL + lp(l, fr))}"/>`,
