@@ -244,3 +244,9 @@
 /* Legacy helpers still used by PT/EN pages */
 .group img.img-zoom { transition: transform 1.2s var(--ease); }
 .group:hover img.img-zoom { transform: scale(1.04); }
+
+/* Subtle optical zoom on image hover (desktop pointers only) */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  [data-zoom] img { transition: transform .7s var(--ease, cubic-bezier(.2,.7,.2,1)); }
+  [data-zoom]:hover img, a:hover [data-zoom] img, article:hover [data-zoom] img { transform: scale(1.03); }
+}

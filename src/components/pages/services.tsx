@@ -79,20 +79,25 @@ export function ServicesPage() {
                     </div>
                     <a href="#diagnostic" className="btn-pill">{t.labels.cta} <span className="arr">→</span></a>
                   </div>
-                  <div data-clip className={portrait ? "grid grid-cols-3 gap-3" : "space-y-4"}>
-                    {imgs.map((im, i) => (
-                      <img
-                        key={im.src}
-                        src={im.src}
-                        alt={g.alts[i]}
-                        width={im.w}
-                        height={im.h}
-                        loading="lazy"
-                        decoding="async"
-                        sizes={portrait ? "(min-width:1024px) 200px, 33vw" : "(min-width:1024px) 600px, 100vw"}
-                        className={`w-full border-[3px] border-azul object-cover ${portrait ? "aspect-[2/3]" : "aspect-[16/9] object-top"} ${!portrait && i === 0 ? "frame" : ""}`}
-                      />
-                    ))}
+                  <div data-clip className={portrait ? "grid grid-cols-3 gap-3" : gi === 1 ? "grid grid-cols-[1.1fr_1fr] gap-4" : "space-y-4"}>
+                    {imgs.map((im, i) => {
+                      const reel = !portrait && gi === 1;
+                      const shape = portrait ? "aspect-[2/3]" : reel ? (i === 0 ? "row-span-2 aspect-[9/16]" : "aspect-[4/5]") : "aspect-[16/9]";
+                      return (
+                        <div key={im.src} data-zoom className={`overflow-hidden border-[3px] border-azul ${shape} ${!portrait && !reel && i === 0 ? "frame" : ""} ${reel && i === 0 ? "rounded-[28px]" : ""}`}>
+                          <img
+                            src={im.src}
+                            alt={g.alts[i]}
+                            width={im.w}
+                            height={im.h}
+                            loading="lazy"
+                            decoding="async"
+                            sizes={portrait ? "(min-width:1024px) 200px, 33vw" : "(min-width:1024px) 600px, 100vw"}
+                            className={`size-full object-cover ${reel ? "" : "object-top"}`}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -100,9 +105,9 @@ export function ServicesPage() {
           );
         })}
 
-        <section className="section-y !pb-12">
+        <section className="section-y bg-azul-profundo text-superficie [&_h2]:text-superficie">
           <div className="wrap">
-            <h2 data-reveal><HeadingText h={t.closing} /></h2>
+            <h2 data-reveal className="max-w-[18ch]"><HeadingText h={t.closing} /></h2>
           </div>
         </section>
         <LogosBand locale={locale} />
