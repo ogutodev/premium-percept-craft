@@ -3,9 +3,10 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { MetaRow } from "@/components/brand";
 import { lp, useLocale } from "@/lib/i18n";
+import { CHROME } from "@/lib/content/chrome";
 import type { Photo, Project } from "@/lib/projects";
 
-function Lightbox({ photos, index, onClose, onMove }: { photos: Photo[]; index: number; onClose: () => void; onMove: (d: number) => void }) {
+function Lightbox({ photos, index, onClose, onMove, c }: { photos: Photo[]; index: number; onClose: () => void; onMove: (d: number) => void; c: (typeof CHROME)["fr"]["cs"] }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -31,18 +32,18 @@ function Lightbox({ photos, index, onClose, onMove }: { photos: Photo[]; index: 
   const p = photos[index];
   const btn = "inline-flex size-12 items-center justify-center border-2 border-white text-2xl text-white";
   return (
-    <div ref={ref} role="dialog" aria-modal="true" aria-label="Galerie photo" className="on-dark fixed inset-0 z-[80] flex flex-col bg-azul-profundo p-4 md:p-8">
+    <div ref={ref} role="dialog" aria-modal="true" aria-label={c.lightbox} className="on-dark fixed inset-0 z-[80] flex flex-col bg-azul-profundo p-4 md:p-8">
       <div className="flex items-center justify-between text-nevoa">
         <span className="meta text-nevoa">{index + 1} / {photos.length}</span>
-        <button type="button" onClick={onClose} aria-label="Fermer la galerie" className={btn}>×</button>
+        <button type="button" onClick={onClose} aria-label={c.closeGallery} className={btn}>×</button>
       </div>
       <figure className="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 py-4">
         <img src={p.src} alt={p.alt} width={p.w} height={p.h} className="max-h-full min-h-0 max-w-full object-contain" />
         <figcaption className="text-center text-[14px] text-nevoa">{p.alt}</figcaption>
       </figure>
       <div className="flex justify-center gap-4">
-        <button type="button" onClick={() => onMove(-1)} aria-label="Photo précédente" className={btn}>←</button>
-        <button type="button" onClick={() => onMove(1)} aria-label="Photo suivante" className={btn}>→</button>
+        <button type="button" onClick={() => onMove(-1)} aria-label={c.prev} className={btn}>←</button>
+        <button type="button" onClick={() => onMove(1)} aria-label={c.next} className={btn}>→</button>
       </div>
     </div>
   );
@@ -50,6 +51,7 @@ function Lightbox({ photos, index, onClose, onMove }: { photos: Photo[]; index: 
 
 export function CaseStudyPage({ project: p }: { project: Project }) {
   const locale = useLocale();
+  const c = CHROME[locale].cs;
   const [open, setOpen] = useState<number | null>(null);
   const triggers = useRef<(HTMLButtonElement | null)[]>([]);
   const portrait = p.coverPhoto.h > p.coverPhoto.w;
@@ -73,38 +75,38 @@ export function CaseStudyPage({ project: p }: { project: Project }) {
       <main id="main">
         <section className="section-y !pt-10">
           <div className="wrap">
-            <nav aria-label="Fil d’Ariane" className="mb-8 text-[14px]">
+            <nav aria-label={c.breadcrumb} className="mb-8 text-[14px]">
               <ol className="flex flex-wrap items-center gap-2 text-suave">
-                <li><a href={lp(locale, "/")} className="underline hover:text-azul">Accueil</a></li>
+                <li><a href={lp(locale, "/")} className="underline hover:text-azul">{c.home}</a></li>
                 <li aria-hidden>›</li>
-                <li><a href={lp(locale, "/#realisations")} className="underline hover:text-azul">Réalisations</a></li>
+                <li><a href={lp(locale, "/contenus")} className="underline hover:text-azul">{c.work}</a></li>
                 <li aria-hidden>›</li>
                 <li aria-current="page" className="font-semibold text-azul">{p.name}</li>
               </ol>
             </nav>
-            <MetaRow items={["Étude de cas", p.service, p.location]} />
+            <MetaRow items={[c.eyebrow, p.service, p.location]} />
             <div className={`mt-10 grid items-start gap-12 ${portrait ? "lg:grid-cols-[1fr_minmax(0,400px)]" : ""}`}>
               <div className="space-y-8">
                 <h1>{p.name}</h1>
                 <div className="grid gap-10 md:grid-cols-2">
                   <div className="rule-top">
-                    <h2 className="t-cond !text-[28px]">Le défi</h2>
+                    <h2 className="t-cond !text-[28px]">{c.challenge}</h2>
                     <p className="mt-3">{p.challenge}</p>
                   </div>
                   <div className="rule-top">
-                    <h2 className="t-cond !text-[28px]">Notre approche</h2>
+                    <h2 className="t-cond !text-[28px]">{c.approach}</h2>
                     <p className="mt-3">{p.approach}</p>
                   </div>
                 </div>
                 <div>
-                  <h2 className="meta !text-[13px] !leading-normal">Livrables</h2>
+                  <h2 className="meta !text-[13px] !leading-normal">{c.deliverables}</h2>
                   <ul className="mt-3 flex flex-wrap gap-2">
                     {p.deliverables.map((d) => <li key={d} className="chip">{d}</li>)}
                   </ul>
                 </div>
                 {p.results.length > 0 && (
                   <div>
-                    <h2 className="meta !text-[13px] !leading-normal">Résultats</h2>
+                    <h2 className="meta !text-[13px] !leading-normal">{c.results}</h2>
                     <ul className="mt-3 list-disc pl-5">{p.results.map((r) => <li key={r}>{r}</li>)}</ul>
                   </div>
                 )}
@@ -117,8 +119,8 @@ export function CaseStudyPage({ project: p }: { project: Project }) {
 
         <section className="section-y bg-white" aria-labelledby="galerie">
           <div className="wrap">
-            <MetaRow items={["Galerie", `${p.gallery.length} photos`]} />
-            <h2 id="galerie" className="sr-only">Galerie</h2>
+            <MetaRow items={[c.gallery, `${p.gallery.length} ${c.photos}`]} />
+            <h2 id="galerie" className="sr-only">{c.gallery}</h2>
             <ul data-reveal-stagger className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
               {p.gallery.map((g, i) => (
                 <li key={g.src} className={g.w > g.h && i === 0 ? "col-span-2" : ""}>
@@ -126,7 +128,7 @@ export function CaseStudyPage({ project: p }: { project: Project }) {
                     ref={(el) => { triggers.current[i] = el; }}
                     type="button"
                     onClick={() => setOpen(i)}
-                    aria-label={`Agrandir : ${g.alt}`}
+                    aria-label={`${c.enlarge}${g.alt}`}
                     className="card-pop block w-full border-[3px] border-azul bg-white"
                   >
                     <img src={g.src} alt={g.alt} width={g.w} height={g.h} loading="lazy" decoding="async" sizes="(min-width:768px) 33vw, 50vw" className={`w-full object-cover ${g.h > g.w ? "aspect-[2/3]" : "aspect-[3/2]"}`} />
@@ -134,21 +136,21 @@ export function CaseStudyPage({ project: p }: { project: Project }) {
                 </li>
               ))}
             </ul>
-            <a href={lp(locale, "/#realisations")} className="link-u mt-12">← Toutes les réalisations</a>
+            <a href={lp(locale, "/contenus")} className="link-u mt-12">{c.all}</a>
           </div>
         </section>
 
         <section className="on-dark bg-azul py-16 text-white">
           <div className="wrap flex flex-wrap items-center justify-between gap-6">
-            <p className="t-cond text-[clamp(36px,5vw,64px)]">Un projet similaire&nbsp;?</p>
+            <p className="t-cond text-[clamp(36px,5vw,64px)]">{c.similar}</p>
             <a href={lp(locale, "/#diagnostic")} className="inline-flex min-h-14 items-center bg-white px-7 text-[15px] font-bold uppercase tracking-[1px] text-azul shadow-[10px_10px_0_var(--color-lima)]">
-              Parlons-en <span className="arr ml-2">→</span>
+              {c.talk} <span className="arr ml-2">→</span>
             </a>
           </div>
         </section>
       </main>
       <SiteFooter />
-      {open !== null && <Lightbox photos={p.gallery} index={open} onClose={close} onMove={move} />}
+      {open !== null && <Lightbox photos={p.gallery} index={open} onClose={close} onMove={move} c={c} />}
     </div>
   );
 }

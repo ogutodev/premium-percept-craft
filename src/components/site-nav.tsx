@@ -2,20 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import logo from "@/assets/logo-triade-bleu.webp";
 import { LOCALES, localeFromPath, lp, stripLocale } from "@/lib/i18n";
+import { CHROME } from "@/lib/content/chrome";
 
-const SECTIONS = [
-  ["services", "Services"],
-  ["realisations", "Réalisations"],
-  ["methode", "Méthode"],
-  ["apropos", "À propos"],
-] as const;
+const SECTION_IDS = ["services", "realisations", "methode", "apropos"] as const;
 
 export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const locale = localeFromPath(pathname);
   const base = stripLocale(pathname);
   const isHome = base === "/";
-  const href = (id: string) => (isHome ? `#${id}` : lp(locale, `/#${id}`));
+  const c = CHROME[locale];
+  const SECTIONS = SECTION_IDS.map((id) => [id, c.nav[id]] as const);
+  const href = (id: string) =>
+    isHome ? `#${id}` : id === "realisations" ? lp(locale, "/contenus") : lp(locale, `/#${id}`);
 
   const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -47,7 +46,7 @@ export function SiteNav() {
   // Active section indicator.
   useEffect(() => {
     if (!isHome) return;
-    const els = SECTIONS.map(([id]) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    const els = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
@@ -95,7 +94,7 @@ export function SiteNav() {
   }
 
   const langSwitch = (dark: boolean) => (
-    <div className="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[1.5px]" aria-label="Langue">
+    <div className="flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[1.5px]" aria-label={c.lang}>
       {LOCALES.map((l, i) => (
         <span key={l} className="flex items-center gap-2">
           {i > 0 && <span aria-hidden className={dark ? "text-nevoa" : "text-suave"}>·</span>}
@@ -118,17 +117,17 @@ export function SiteNav() {
   return (
     <>
       <a href="#main" className="sr-only z-[60] bg-azul px-4 py-3 font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
-        Aller au contenu
+        {c.skip}
       </a>
       <header
         ref={headerRef}
         className={`site-header sticky top-0 z-40 border-b-2 border-azul bg-superficie ${hidden ? "is-hidden" : ""}`}
       >
         <div className={`wrap flex items-center justify-between gap-6 transition-[padding] duration-300 ${compact ? "py-2" : "py-4"}`}>
-          <a href={lp(locale, "/")} className="flex min-h-11 items-center" aria-label="TRÍADE — accueil">
+          <a href={lp(locale, "/")} className="flex min-h-11 items-center" aria-label={c.homeLabel}>
             <img src={logo} alt="TRÍADE" width={60} height={46} className={`w-auto transition-[height] duration-300 ${compact ? "h-9" : "h-[46px]"}`} />
           </a>
-          <nav aria-label="Navigation principale" className="hidden items-center gap-7 min-[900px]:flex">
+          <nav aria-label={c.navMain} className="hidden items-center gap-7 min-[900px]:flex">
             {SECTIONS.map(([id, label]) => (
               <a
                 key={id}
@@ -142,7 +141,7 @@ export function SiteNav() {
             ))}
             {langSwitch(false)}
             <a href={href("diagnostic")} className="btn-pill !min-h-11 !px-5 !text-[14px]">
-              Diagnostic gratuit
+              {c.ctaShort}
             </a>
           </nav>
           <button
@@ -151,7 +150,7 @@ export function SiteNav() {
             className="inline-flex size-11 items-center justify-center border-2 border-azul text-azul min-[900px]:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-label={open ? c.closeMenu : c.openMenu}
             onClick={() => setOpen(true)}
           >
             <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden fill="currentColor">
@@ -166,23 +165,23 @@ export function SiteNav() {
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Menu"
+        aria-label={c.menu}
         hidden={!open}
         className="on-dark fixed inset-0 z-[70] overflow-y-auto bg-azul-profundo text-white"
       >
         <div className="wrap flex min-h-full flex-col gap-10 py-5">
           <div className="flex items-center justify-between">
-            <span className="meta text-nevoa">Menu</span>
+            <span className="meta text-nevoa">{c.menu}</span>
             <button
               type="button"
               onClick={close}
-              aria-label="Fermer le menu"
+              aria-label={c.closeMenu}
               className="inline-flex size-11 items-center justify-center border-2 border-white text-2xl text-white"
             >
               ×
             </button>
           </div>
-          <nav aria-label="Navigation mobile" className="flex flex-col gap-2">
+          <nav aria-label={c.navMobile} className="flex flex-col gap-2">
             {SECTIONS.map(([id, label]) => (
               <a key={id} href={href(id)} onClick={() => setOpen(false)} className="t-cond py-1 text-[clamp(44px,13vw,72px)]">
                 {label}
@@ -195,7 +194,7 @@ export function SiteNav() {
             onClick={() => setOpen(false)}
             className="mt-auto flex min-h-14 items-center justify-center bg-white px-6 text-center text-[15px] font-bold uppercase tracking-[1px] text-azul shadow-[10px_10px_0_var(--color-lima)]"
           >
-            Réserver mon diagnostic gratuit <span className="arr ml-2">→</span>
+            {c.ctaLong} <span className="arr ml-2">→</span>
           </a>
         </div>
       </div>

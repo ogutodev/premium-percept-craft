@@ -1,5 +1,5 @@
 import { SITE_URL, seoLinks, lp, LOCALES, type Locale } from "@/lib/i18n";
-import { FAQ_FR } from "@/lib/faq";
+import { HOME } from "@/lib/content/home";
 import type { Project } from "@/lib/projects";
 
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
@@ -60,10 +60,10 @@ function homeGraph(locale: Locale) {
       publisher: { "@id": ORG_ID },
     },
   ];
-  if (locale === "fr") {
+  {
     graph.push({
       "@type": "FAQPage",
-      mainEntity: FAQ_FR.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      mainEntity: HOME[locale].faq.items.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     });
   }
   return { "@context": "https://schema.org", "@graph": graph };
@@ -85,9 +85,9 @@ const TEXT: Record<PageKey, Record<Locale, T>> = {
     en: { title: "Marketing services in Geneva: websites, Google, social media | TRÍADE", description: "Websites, Google Business Profile, social media, ads, photo and video for SMEs in Geneva. What's included, timelines and deliverables." },
   },
   contenus: {
-    fr: { title: "Contenus photo, vidéo et réseaux sociaux à Genève | TRÍADE", description: "Photos, vidéos, Reels et contenus pour réseaux sociaux réalisés par TRÍADE pour des entreprises de Genève." },
-    pt: { title: "Conteúdo de foto, vídeo e redes sociais em Genebra | TRÍADE", description: "Fotos, vídeos, Reels e conteúdo para redes sociais criados pela TRÍADE para empresas de Genebra." },
-    en: { title: "Photo, video and social media content in Geneva | TRÍADE", description: "Photos, videos, Reels and social media content made by TRÍADE for Geneva businesses." },
+    fr: { title: "Réalisations : sites web, photo et réseaux sociaux à Genève | TRÍADE", description: "Études de cas, sites web et photos réalisés par TRÍADE pour des PME de Genève : Espresso Club, US Genève-Ville, Dora d’Istria, Peinture Vedia." },
+    pt: { title: "Trabalhos: sites, foto e redes sociais em Genebra | TRÍADE", description: "Estudos de caso, sites e fotos criados pela TRÍADE para pequenas empresas de Genebra: Espresso Club, US Genève-Ville, Dora d’Istria, Peinture Vedia." },
+    en: { title: "Work: websites, photography and social media in Geneva | TRÍADE", description: "Case studies, websites and photos made by TRÍADE for Geneva SMEs: Espresso Club, US Genève-Ville, Dora d’Istria and Peinture Vedia." },
   },
   impressum: {
     fr: { title: "Impressum — TRÍADE Marketing & Publicité, Genève", description: "Mentions légales de TRÍADE Marketing & Publicité, agence marketing à Genève." },
@@ -135,10 +135,10 @@ export function pageHead(page: PageKey, locale: Locale) {
   };
 }
 
-const CASE_WORDS: Record<Locale, { at: string; home: string }> = {
-  fr: { at: "à", home: "Accueil" },
-  pt: { at: "em", home: "Início" },
-  en: { at: "in", home: "Home" },
+const CASE_WORDS: Record<Locale, { home: string }> = {
+  fr: { home: "Accueil" },
+  pt: { home: "Início" },
+  en: { home: "Home" },
 };
 
 export function caseHead(p: Project | undefined, locale: Locale, slug: string) {
@@ -146,7 +146,7 @@ export function caseHead(p: Project | undefined, locale: Locale, slug: string) {
   if (!p) return { meta: [{ title: "TRÍADE" }, { name: "robots", content: "noindex" }], links: [], scripts: [] };
   const w = CASE_WORDS[locale];
   const challenge = p.challenge.length > 155 ? p.challenge.slice(0, 152).replace(/\s+\S*$/, "") + "…" : p.challenge;
-  const t = { title: `${p.name} — ${p.service} ${w.at} ${p.location} | TRÍADE`, description: challenge };
+  const t = { title: `${p.name} — ${p.service} ${p.at} | TRÍADE`, description: challenge };
   const url = SITE_URL + lp(locale, path);
   const ld = {
     "@context": "https://schema.org",
