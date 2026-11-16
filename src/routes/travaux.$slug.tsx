@@ -6,7 +6,7 @@ import { caseHead } from "@/lib/seo";
 export const Route = createFileRoute("/travaux/$slug")({
   staticData: { sitemap: true },
   loader: ({ params }) => {
-    const project = getProject(params.slug);
+    const project = getProject(params.slug, "fr");
     if (!project) throw notFound();
     return { project };
   },

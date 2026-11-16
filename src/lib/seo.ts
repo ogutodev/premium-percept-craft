@@ -135,10 +135,10 @@ export function pageHead(page: PageKey, locale: Locale) {
   };
 }
 
-const CASE_WORDS: Record<Locale, { at: string; home: string }> = {
-  fr: { at: "à", home: "Accueil" },
-  pt: { at: "em", home: "Início" },
-  en: { at: "in", home: "Home" },
+const CASE_WORDS: Record<Locale, { home: string }> = {
+  fr: { home: "Accueil" },
+  pt: { home: "Início" },
+  en: { home: "Home" },
 };
 
 export function caseHead(p: Project | undefined, locale: Locale, slug: string) {
@@ -146,7 +146,7 @@ export function caseHead(p: Project | undefined, locale: Locale, slug: string) {
   if (!p) return { meta: [{ title: "TRÍADE" }, { name: "robots", content: "noindex" }], links: [], scripts: [] };
   const w = CASE_WORDS[locale];
   const challenge = p.challenge.length > 155 ? p.challenge.slice(0, 152).replace(/\s+\S*$/, "") + "…" : p.challenge;
-  const t = { title: `${p.name} — ${p.service} ${w.at} ${p.location} | TRÍADE`, description: challenge };
+  const t = { title: `${p.name} — ${p.service} ${p.at} | TRÍADE`, description: challenge };
   const url = SITE_URL + lp(locale, path);
   const ld = {
     "@context": "https://schema.org",
