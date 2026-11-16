@@ -4,7 +4,7 @@ export type Locale = "fr" | "pt" | "en";
 export const LOCALES: Locale[] = ["fr", "pt", "en"];
 export const SITE_URL = "https://triadepublicite.ch";
 export const HREFLANG_CODES = { fr: "fr-CH", pt: "pt-BR", en: "en" } as const;
-const HREFLANG: Record<Locale, string> = { fr: "fr-CH", pt: "pt-BR", en: "en" };
+const HREFLANG: Record<Locale, string> = HREFLANG_CODES;
 
 export function localeFromPath(pathname: string): Locale {
   if (pathname === "/pt" || pathname.startsWith("/pt/")) return "pt";
