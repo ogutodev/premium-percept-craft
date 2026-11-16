@@ -135,10 +135,10 @@ export function pageHead(page: PageKey, locale: Locale) {
   };
 }
 
-const CASE_WORDS: Record<Locale, { at: string; home: string; work: string }> = {
-  fr: { at: "à", home: "Accueil", work: "Réalisations" },
-  pt: { at: "em", home: "Início", work: "Trabalhos" },
-  en: { at: "in", home: "Home", work: "Work" },
+const CASE_WORDS: Record<Locale, { at: string; home: string }> = {
+  fr: { at: "à", home: "Accueil" },
+  pt: { at: "em", home: "Início" },
+  en: { at: "in", home: "Home" },
 };
 
 export function caseHead(p: Project | undefined, locale: Locale, slug: string) {
@@ -155,8 +155,7 @@ export function caseHead(p: Project | undefined, locale: Locale, slug: string) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: w.home, item: SITE_URL + lp(locale, "/") },
-          { "@type": "ListItem", position: 2, name: w.work, item: SITE_URL + lp(locale, "/") + (locale === "fr" ? "#travaux" : "#travaux") },
-          { "@type": "ListItem", position: 3, name: p.name, item: url },
+          { "@type": "ListItem", position: 2, name: p.name, item: url },
         ],
       },
       {
