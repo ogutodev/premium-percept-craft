@@ -7,6 +7,7 @@ import { SITE_URL, LOCALES, HREFLANG_CODES, lp, stripLocale } from "@/lib/i18n";
 // Date of the last significant content change, per French path (update when a page's content changes).
 const LASTMOD: Record<string, string> = {
   "/": "2026-11-16",
+  "/contenus": "2026-11-16",
   "/solutions": "2026-11-16",
   "/travaux/espresso-club": "2026-11-16",
   "/travaux/us-geneve-ville": "2026-11-16",
