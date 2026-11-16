@@ -37,7 +37,7 @@ const C: Record<Locale, { title: string; updated: string; blocks: { h: string; p
     updated: "In line with the Swiss Federal Act on Data Protection (nFADP). Last updated: October 2026.",
     blocks: [
       { h: "Controller", p: "TRÍADE Marketing et Publicité, Geneva, Switzerland — info@triadepublicite.ch — +41 78 967 05 37." },
-      { h: "Contact form", p: "We collect: name, company, email, phone (optional), project type, estimated budget, timeline and message, plus your consent and the site language." },
+      { h: "Contact form", p: "We collect: name, company, email, phone (optional), areas of interest and message (optional), plus your consent and the site language." },
       { h: "WhatsApp", p: "If you contact us via WhatsApp, your number and messages are processed by WhatsApp (Meta Platforms) under its own privacy policy. We use these conversations only to answer your request." },
       { h: "Analytics and cookies", p: "This site uses no advertising cookies and no third-party tracking tools. Our host may record anonymous, technical visit statistics (page views, device type) without cookies to keep the site running properly." },
       { h: "Purpose", p: "To answer your requests, prepare a proposal and follow up. Your data is never sold or used for advertising." },

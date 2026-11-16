@@ -11,7 +11,11 @@ import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import { MotionRuntime } from "@/components/motion-runtime";
 
-import { useLocale } from "@/lib/i18n";
+import { lp, useLocale } from "@/lib/i18n";
+import { CHROME } from "@/lib/content/chrome";
+import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
+import { MetaRow } from "@/components/brand";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "@/lib/seo";
 import { isPreviewHost } from "@/lib/host";
@@ -19,23 +23,24 @@ import { isPreviewHost } from "@/lib/host";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
+  const locale = useLocale();
+  const t = CHROME[locale].nf;
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+    <div className="min-h-screen bg-superficie text-tinta">
+      <SiteNav />
+      <main id="main" className="section-y">
+        <div className="wrap">
+          <MetaRow items={["404", "TRÍADE"]} />
+          <h1 className="mt-10">{t.title}</h1>
+          <p className="mt-6 max-w-[60ch] text-[19px]">{t.body}</p>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <a href={lp(locale, "/")} className="btn-pill">{t.home} <span className="arr">→</span></a>
+            <a href={lp(locale, "/solutions")} className="link-u">{t.services}</a>
+            <a href={lp(locale, "/#diagnostic")} className="link-u">{t.diag}</a>
+          </div>
         </div>
-      </div>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
