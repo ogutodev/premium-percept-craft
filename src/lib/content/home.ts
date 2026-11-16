@@ -34,7 +34,7 @@ export const HOME: Record<Locale, HomeContent> = {
     ctaPrimary: "Réserver mon diagnostic gratuit", ctaSecondary: "Voir nos réalisations", ctaNote: "30 minutes, sans engagement · en français ou en portugais",
     altLine: { lang: "pt", text: "Agência lusófona em Genebra: atendemos em francês e português." },
     heroAlt: "Augusto Sousa, fondateur de TRÍADE", founderLabel: "Fondateur",
-    logosLabel: "Clients", logosTitle: "Ils nous font confiance",
+    logosLabel: "Clients", logosTitle: "Ils nous ont fait confiance",
     services: {
       meta: ["01 — Services", "Ce que nous faisons"], h2: { lines: ["Trois leviers.", "Un seul"], hl: "interlocuteur." },
       intro: "Pas besoin de cinq prestataires. Nous construisons les trois choses dont une PME a besoin pour attirer de nouveaux clients, et nous les faisons travailler ensemble.",
