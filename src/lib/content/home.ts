@@ -21,6 +21,11 @@ export type HomeContent = {
     sitesTitle: string; sitesMeta: string;
     sites: { alt: string; meta: string; d: string }[];
   };
+  reels: {
+    meta: string[]; h2: Heading; intro: string;
+    items: { title: string; tag: string; alt: string }[];
+    cta: string; ctaNote: string;
+  };
   method: { meta: string[]; h2: Heading; steps: { t: string; d: string }[] };
   about: { meta: string[]; h2: Heading; pA: string; pB: string; p2: string; altLine: { lang: "fr" | "pt"; text: string }; alts: [string, string]; facts: [string, string][] };
   faq: { meta: string[]; h2: Heading; items: { q: string; a: string }[] };
@@ -58,8 +63,19 @@ export const HOME: Record<Locale, HomeContent> = {
         { alt: "Page d’accueil du site de l’entreprise Peinture Vedia", meta: "Peinture · rénovation · Genève", d: "Site vitrine avec formulaire de demande de devis." },
       ],
     },
+    reels: {
+      meta: ["03 — En direct du studio", "@triadepublicite"],
+      h2: { lines: ["Le travail,", "en"], hl: "mouvement." },
+      intro: "Reels, coulisses et résultats, publiés chaque semaine. Une sélection de ce qui passe en ce moment sur notre Instagram.",
+      items: [
+        { title: "Match Day · US Genève-Ville", tag: "Reel · Sport", alt: "Joueur de l’US Genève-Ville portant le numéro 17, format vertical de Reel" },
+        { title: "Table & lumière · Espresso Club", tag: "Photo · Restauration", alt: "Verres à vin et couverts sur une serviette rouge à l’Espresso Club" },
+        { title: "Coulisses d’un shooting", tag: "Reel · Studio", alt: "Joueurs de l’US Genève-Ville à l’échauffement, coulisses d’une séance photo" },
+      ],
+      cta: "Suivre @triadepublicite", ctaNote: "Voir sur Instagram",
+    },
     method: {
-      meta: ["03 — Méthode", "Comment nous travaillons"], h2: { lines: ["Simple, clair,"], hl: "mesurable." },
+      meta: ["04 — Méthode", "Comment nous travaillons"], h2: { lines: ["Simple, clair,"], hl: "mesurable." },
       steps: [
         { t: "Diagnostic", d: "30 minutes pour comprendre votre entreprise, vos clients et ce qui bloque aujourd’hui. Gratuit." },
         { t: "Plan et devis", d: "Des priorités claires et un devis détaillé. Vous savez ce que vous payez, et pourquoi." },
@@ -68,7 +84,7 @@ export const HOME: Record<Locale, HomeContent> = {
       ],
     },
     about: {
-      meta: ["04 — À propos", "Genève · Suisse romande"], h2: { lines: ["Un interlocuteur direct. Pas un"], hl: "standard." },
+      meta: ["05 — À propos", "Genève · Suisse romande"], h2: { lines: ["Un interlocuteur direct. Pas un"], hl: "standard." },
       pA: "TRÍADE est dirigée par ", pB: ", à Genève. Vous parlez directement à la personne qui pense votre stratégie, tient la caméra et construit votre site.",
       p2: "Une agence à taille humaine, ancrée en Suisse romande, qui travaille en français, en portugais et en anglais.",
       altLine: { lang: "pt", text: "Uma agência lusófona dentro do mercado suíço." },
@@ -76,7 +92,7 @@ export const HOME: Record<Locale, HomeContent> = {
       facts: [["Basé à", "Genève"], ["Langues", "FR · PT · EN"], ["Métier", "Stratégie · Image"]],
     },
     faq: {
-      meta: ["05 — Questions fréquentes", "Avant de nous écrire"], h2: { lines: ["Vos"], hl: "questions." },
+      meta: ["06 — Questions fréquentes", "Avant de nous écrire"], h2: { lines: ["Vos"], hl: "questions." },
       items: [
         { q: `Travaillez-vous avec les petites entreprises${NB}?`, a: `Oui. La plupart de nos clients sont des PME, des commerces et des indépendants de Suisse romande${NB}: restaurants, artisans, associations, prestataires de services.` },
         { q: `Combien coûte un site web ou la gestion de vos réseaux sociaux${NB}?`, a: "Chaque projet est chiffré après le diagnostic gratuit, selon vos besoins réels. Vous recevez un devis détaillé avant tout engagement." },
@@ -118,8 +134,19 @@ export const HOME: Record<Locale, HomeContent> = {
         { alt: "Página inicial do site da empresa Peinture Vedia", meta: "Pintura · reforma · Genebra", d: "Site institucional com formulário de pedido de orçamento." },
       ],
     },
+    reels: {
+      meta: ["03 — Direto do estúdio", "@triadepublicite"],
+      h2: { lines: ["O trabalho,", "em"], hl: "movimento." },
+      intro: "Reels, bastidores e resultados, publicados toda semana. Uma seleção do que está no ar agora no nosso Instagram.",
+      items: [
+        { title: "Match Day · US Genève-Ville", tag: "Reel · Esporte", alt: "Jogador do US Genève-Ville com a camisa 17, formato vertical de Reel" },
+        { title: "Mesa & luz · Espresso Club", tag: "Foto · Gastronomia", alt: "Taças de vinho e talheres sobre um guardanapo vermelho no Espresso Club" },
+        { title: "Bastidores de uma sessão", tag: "Reel · Estúdio", alt: "Jogadores do US Genève-Ville no aquecimento, bastidores de uma sessão de fotos" },
+      ],
+      cta: "Seguir @triadepublicite", ctaNote: "Ver no Instagram",
+    },
     method: {
-      meta: ["03 — Método", "Como trabalhamos"], h2: { lines: ["Simples, claro,"], hl: "mensurável." },
+      meta: ["04 — Método", "Como trabalhamos"], h2: { lines: ["Simples, claro,"], hl: "mensurável." },
       steps: [
         { t: "Diagnóstico", d: "30 minutos para entender sua empresa, seus clientes e o que está travando hoje. Grátis." },
         { t: "Plano e orçamento", d: "Prioridades claras e um orçamento detalhado. Você sabe o que está pagando, e por quê." },
@@ -128,7 +155,7 @@ export const HOME: Record<Locale, HomeContent> = {
       ],
     },
     about: {
-      meta: ["04 — Sobre", "Genebra · Suíça francófona"], h2: { lines: ["Um contato direto. Não um atendimento"], hl: "padrão." },
+      meta: ["05 — Sobre", "Genebra · Suíça francófona"], h2: { lines: ["Um contato direto. Não um atendimento"], hl: "padrão." },
       pA: "A TRÍADE é dirigida por ", pB: ", em Genebra. Você fala direto com quem pensa sua estratégia, segura a câmera e constrói seu site.",
       p2: "Uma agência de tamanho humano, enraizada na Suíça francófona, que trabalha em francês, português e inglês.",
       altLine: { lang: "fr", text: "Une agence lusophone au cœur du marché suisse." },
@@ -136,7 +163,7 @@ export const HOME: Record<Locale, HomeContent> = {
       facts: [["Baseada em", "Genebra"], ["Idiomas", "FR · PT · EN"], ["Ofício", "Estratégia · Imagem"]],
     },
     faq: {
-      meta: ["05 — Perguntas frequentes", "Antes de escrever pra gente"], h2: { lines: ["Suas"], hl: "perguntas." },
+      meta: ["06 — Perguntas frequentes", "Antes de escrever pra gente"], h2: { lines: ["Suas"], hl: "perguntas." },
       items: [
         { q: "Vocês trabalham com pequenas empresas?", a: "Sim. A maioria dos nossos clientes são PMEs, comércios e autônomos da Suíça francófona: restaurantes, artesãos, associações e prestadores de serviço." },
         { q: "Quanto custa um site ou a gestão das redes sociais?", a: "Cada projeto é orçado depois do diagnóstico gratuito, de acordo com as suas necessidades reais. Você recebe um orçamento detalhado antes de qualquer compromisso." },
@@ -178,8 +205,19 @@ export const HOME: Record<Locale, HomeContent> = {
         { alt: "Peinture Vedia company website homepage", meta: "Painting · renovation · Geneva", d: "Company website with a quote request form." },
       ],
     },
+    reels: {
+      meta: ["03 — Live from the studio", "@triadepublicite"],
+      h2: { lines: ["The work,", "in"], hl: "motion." },
+      intro: "Reels, behind the scenes and results, published every week. A selection of what’s live on our Instagram right now.",
+      items: [
+        { title: "Match Day · US Genève-Ville", tag: "Reel · Sport", alt: "US Genève-Ville player wearing number 17, vertical Reel format" },
+        { title: "Table & light · Espresso Club", tag: "Photo · Hospitality", alt: "Wine glasses and cutlery on a red napkin at Espresso Club" },
+        { title: "Behind a photo shoot", tag: "Reel · Studio", alt: "US Genève-Ville players warming up, behind the scenes of a photo shoot" },
+      ],
+      cta: "Follow @triadepublicite", ctaNote: "View on Instagram",
+    },
     method: {
-      meta: ["03 — Method", "How we work"], h2: { lines: ["Simple, clear,"], hl: "measurable." },
+      meta: ["04 — Method", "How we work"], h2: { lines: ["Simple, clear,"], hl: "measurable." },
       steps: [
         { t: "Diagnostic", d: "30 minutes to understand your business, your customers and what’s holding you back. Free." },
         { t: "Plan and quote", d: "Clear priorities and a detailed quote. You know what you pay for, and why." },
@@ -188,7 +226,7 @@ export const HOME: Record<Locale, HomeContent> = {
       ],
     },
     about: {
-      meta: ["04 — About", "Geneva · French-speaking Switzerland"], h2: { lines: ["A direct contact. Not a"], hl: "switchboard." },
+      meta: ["05 — About", "Geneva · French-speaking Switzerland"], h2: { lines: ["A direct contact. Not a"], hl: "switchboard." },
       pA: "TRÍADE is run by ", pB: " in Geneva. You talk directly to the person who designs your strategy, holds the camera and builds your website.",
       p2: "A small, hands-on agency rooted in French-speaking Switzerland, working in French, Portuguese and English.",
       altLine: { lang: "pt", text: "Uma agência lusófona dentro do mercado suíço." },
@@ -196,7 +234,7 @@ export const HOME: Record<Locale, HomeContent> = {
       facts: [["Based in", "Geneva"], ["Languages", "FR · PT · EN"], ["Craft", "Strategy · Image"]],
     },
     faq: {
-      meta: ["05 — FAQ", "Before you write to us"], h2: { lines: ["Your"], hl: "questions." },
+      meta: ["06 — FAQ", "Before you write to us"], h2: { lines: ["Your"], hl: "questions." },
       items: [
         { q: "Do you work with small businesses?", a: "Yes. Most of our clients are SMEs, shops and independents in French-speaking Switzerland: restaurants, craftspeople, associations and service providers." },
         { q: "How much does a website or social media management cost?", a: "Every project is quoted after the free diagnostic, based on your actual needs. You receive a detailed quote before any commitment." },

@@ -158,6 +158,42 @@ export function HomePage() {
           </div>
         </section>
 
+        {/* REELS / INSTAGRAM */}
+        <section id="instagram" className="section-y">
+          <div className="wrap">
+            <MetaRow items={t.reels.meta} />
+            <h2 className="mt-10" data-reveal><HeadingText h={t.reels.h2} /></h2>
+            <p className="mt-6 max-w-[620px]" data-reveal>{t.reels.intro}</p>
+            <div data-reveal-stagger className="mt-14 grid gap-6 sm:grid-cols-3">
+              {[usgv17, espressoTable, usgvEchauffement].map((src, i) => {
+                const item = t.reels.items[i];
+                return (
+                  <a
+                    key={item.title}
+                    href="https://www.instagram.com/triadepublicite/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-pop group block"
+                    aria-label={`${item.title} — ${t.reels.ctaNote}`}
+                  >
+                    <div className="frame aspect-[9/16] overflow-hidden rounded-2xl" data-zoom>
+                      <img src={src} alt={item.alt} width={1100} height={1650} loading="lazy" decoding="async" sizes="(min-width: 640px) 33vw, 100vw" className="size-full object-cover" />
+                    </div>
+                    <div className="mt-4 flex items-start justify-between gap-4">
+                      <div>
+                        <p className="meta">{item.tag}</p>
+                        <h3 className="t-cond mt-1 text-[26px]">{item.title}</h3>
+                      </div>
+                      <span className="t-cond mt-1 shrink-0 text-[28px] text-azul transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden>↗</span>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+            <a href="https://www.instagram.com/triadepublicite/" target="_blank" rel="noopener noreferrer" className="btn-pill mt-12">{t.reels.cta} <span className="arr">→</span></a>
+          </div>
+        </section>
+
         {/* MÉTHODE */}
         <section id="methode" className="section-y">
           <div className="wrap">
